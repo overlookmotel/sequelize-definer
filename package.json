@@ -8,5 +8,10 @@
   },
   "dependencies": {
   },
+  "keywords": [
+    "sequelize",
+    "sequelize-plugin",
+    "define"
+  ],
   "readmeFilename": "README.md"
 }
