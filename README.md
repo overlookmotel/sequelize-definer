@@ -10,6 +10,5 @@ API is stable.
 
 ## Changelog
 
-0.0.1
+See changelog.md
 
-* Initial release
