@@ -14,6 +14,7 @@
     "url": "https://github.com/overlookmotel/sequelize-definer/issues"
   },
   "dependencies": {
+    "require-folder-tree": "1.0.x"
   },
   "devDependencies": {
     "mocha": "*",
