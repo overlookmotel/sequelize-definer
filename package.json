@@ -27,7 +27,8 @@
   "keywords": [
     "sequelize",
     "sequelize-plugin",
-    "define"
+    "define",
+    "model"
   ],
   "scripts": {
     "test": "make all"
