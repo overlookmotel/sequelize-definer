@@ -1,6 +1,6 @@
 # sequelize-definer.js
 
-# Sequelize plugin to ease defining a set of models:
+# Sequelize plugin to help easily define a set of models
 
 ## What's it for?
 

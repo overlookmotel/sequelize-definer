@@ -1,7 +1,7 @@
 {
   "name": "sequelize-definer",
   "version": "0.0.1",
-  "description": "Sequelize plugin to ease defining a set of models",
+  "description": "Sequelize plugin to help easily define a set of models",
   "main": "./lib/",
   "author": {
     "name": "Overlook Motel"
