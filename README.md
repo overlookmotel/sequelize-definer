@@ -59,6 +59,17 @@ Call `Sequelize#defineFromFolder( folderPath )` passing full directory path of t
 
 	sequelize.defineFromFolder( path.join( __dirname, 'models' ) );
 
+Example of a model file:
+
+	// User.js
+	var Sequelize = require('sequelize');
+	
+	module.exports = {
+		fields: {
+			name: { type: Sequelize.STRING }
+		}
+	};
+
 `defineFromFolder()` uses [require-folder-tree](https://github.com/overlookmotel/require-folder-tree/) to load the files from the folder. You can pass options to `require-folder-tree` for how the files are loaded by including an object `loadOptions` in `options` passed to `defineFromFolder()`. e.g.:
 
 	// Load files in sub-folders as models with name prefixed by folder name in camelcase
