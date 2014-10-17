@@ -9,7 +9,9 @@ var chai = require('chai'),
 	promised = require('chai-as-promised'),
 	Support = require(__dirname + '/support'),
 	Sequelize = Support.Sequelize,
-	Promise = Sequelize.Promise;
+	Promise = Sequelize.Promise,
+	Utils = Sequelize.Utils,
+	_ = Utils._;
 
 // init
 
@@ -19,6 +21,26 @@ chai.config.includeStack = true;
 // tests
 
 describe(Support.getTestDialectTeaser("Tests"), function () {
-	describe('???', function() {
+	describe('defineAll', function() {
+		it('defines all models', function() {
+			var definitions = {
+				User: {
+					fields: {
+						name: {type: Sequelize.STRING(50)}
+					}
+				},
+				Task: {
+					fields: {
+						name: {type: Sequelize.STRING(50)}
+					}
+				}
+			};
+			
+			this.sequelize.defineAll(definitions);
+			
+			_.forIn(definitions, function(definition, modelName) {
+				expect(this.sequelize.models[modelName]).to.be.ok;
+			}.bind(this));
+		});
 	});
 });
