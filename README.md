@@ -4,7 +4,7 @@
 
 ## What's it for?
 
-This plugin for [Sequelize](http://sequelizejs.com/) provides 2 utility functions to make it easier to define a set of models at once, either from a Javascript object or a folder.
+This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functions to make it easier to define a set of models at once, either from a Javascript object or a folder.
 
 ## Current status
 
@@ -28,7 +28,8 @@ or, a more verbose form useful if chaining multiple Sequelize plugins:
 	var Sequelize = require('sequelize');
 	require('sequelize-definer')(Sequelize);
 
-### Defining from object - Sequelize#defineAll( definitions [, options] )
+### Defining from object
+#### Sequelize#defineAll( definitions [, options] )
 
 Call `Sequelize#defineAll( definitions )`, passing an object containing the model definitions with the model names as keys.e.g.:
 
@@ -51,7 +52,8 @@ Call `Sequelize#defineAll( definitions )`, passing an object containing the mode
 
 `fields` and `options` are the same as are passed to `Sequelize#define( modelName, fields, options )`. Both are optional.
 
-### Defining from folder - Sequelize#defineFromFolder( folderPath [, options] )
+### Defining from folder
+#### Sequelize#defineFromFolder( folderPath [, options] )
 
 Call `Sequelize#defineFromFolder( folderPath )` passing full directory path of the folder to load model definitions from. e.g.:
 
@@ -59,7 +61,8 @@ Call `Sequelize#defineFromFolder( folderPath )` passing full directory path of t
 
 `defineFromFolder()` uses [require-folder-tree](https://github.com/overlookmotel/require-folder-tree/) to load the files from the folder. You can pass options to `require-folder-tree` for how the files are loaded by including an object `loadOptions` in `options` passed to `defineFromFolder()`. e.g.:
 
-	// Load files in sub-folders as models with name prefixed by folder name in camelcase e.g. `user/permission.js` defines model `userPermission`
+	// Load files in sub-folders as models with name prefixed by folder name in camelcase
+	// e.g. `user/permission.js` defines model `userPermission`
 	sequelize.defineFromFolder( path.join( __dirname, 'models' ), {
 		loadOptions: {
 			flattenPrefix: true
@@ -202,6 +205,7 @@ Defaults to `'id'` (default Sequelize behaviour).
 
 If a function is provided in place of a string, the function is called to get the key name. Function is called with arguments `( modelName, definition, definitions )`.
 
+	// primary key for model User will be UserId
 	sequelize.defineAll( definitions, {
 		primaryKey: function(modelName) {
 			return modelName + 'Id';
@@ -222,7 +226,7 @@ Defaults to `false`.
 
 #### autoAssociate
 
-When `true`, automatically creates associations where a column name matches the primary key of another model. No need to specify `reference` as in the association examples above. This makes it really easy and natural to define associations. Defaults to `false`.
+When `true`, automatically creates associations where a column name matches the model name + primary key of another model. No need to specify `reference` as in the association examples above. If you have a standardized naming convention, this makes it really easy and natural to define associations. Defaults to `false`.
 
 	sequelize.defineAll({
 		User: {
@@ -253,8 +257,7 @@ Defaults to `undefined`.
 	sequelize.defineAll( definitions, { fields: {
 		createdByUserId: {
 			type: Sequelize.INTEGER,
-			allowNull: false,
-			references: 'users'
+			references: 'Users'
 		}
 	} });
 
@@ -265,13 +268,16 @@ If a function is provided in place of an object, the function is called to get t
 		fields: {
 			createdByUserId: function(modelName) {
 				return {
-					reference: 'user',
-					asReverse: Utils.pluralize(modelName) + 'Created',
-					allowNull: true
+					reference: 'User',
+					asReverse: 'created' + Sequelize.Utils.pluralize(modelName)
 				};
 			}
 		}
 	});
+	
+	// Equivalent to e.g.
+	// Task.belongsTo(User, { as: 'createdByUser' });
+	// User.hasMany(Task, { as: 'createdTasks' });
 
 #### labels
 
@@ -286,7 +292,7 @@ Defaults to global define option set in `new Sequelize()`.
 
 #### camelThrough
 
-When `true`, creates through models in camelcase (i.e. 'taskUser' rather than 'taskuser').
+When `true`, creates through model names in camelcase (i.e. 'taskUser' rather than 'taskuser').
 Defaults to `false` (default Sequelize behaviour).
 
 ## Tests
