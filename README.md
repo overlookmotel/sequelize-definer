@@ -66,7 +66,7 @@ Example of a model file:
 	
 	module.exports = {
 		fields: {
-			name: { type: Sequelize.STRING }
+			name: Sequelize.STRING
 		}
 	};
 
@@ -90,12 +90,12 @@ A one-to-many association:
 	sequelize.defineAll({
 		User: {
 			fields: {
-				name: { type: Sequelize.STRING }
+				name: Sequelize.STRING
 			}
 		},
 		Task: {
 			fields: {
-				name: { type: Sequelize.STRING },
+				name: Sequelize.STRING,
 				UserId: {
 					reference: 'User'
 				}
@@ -159,12 +159,12 @@ See `autoAssociate` option below for an even easier way to handle associations.
 	sequelize.defineAll({
 		User: {
 			fields: {
-				name: { type: Sequelize.STRING }
+				name: Sequelize.STRING
 			}
 		},
 		Task: {
 			fields: {
-				name: { type: Sequelize.STRING }
+				name: Sequelize.STRING
 			},
 			manyToMany: {
 				User: true
@@ -194,7 +194,7 @@ Options can also be passed:
 		},
 		UserTask: {
 			fields: {
-				status: { type: Sequelize.STRING }
+				status: Sequelize.STRING
 			}
 		}
 	});
@@ -242,12 +242,12 @@ When `true`, automatically creates associations where a column name matches the 
 	sequelize.defineAll({
 		User: {
 			fields: {
-				name: { type: Sequelize.STRING }
+				name: Sequelize.STRING
 			}
 		},
 		Task: {
 			fields: {
-				name: { type: Sequelize.STRING },
+				name: Sequelize.STRING,
 				UserId: { allowNull: false }
 			}
 		}
