@@ -188,7 +188,8 @@ Options can also be passed:
 					onUpdate: 'RESTRICT', // defaults to undefined
 					as: 'Worker', // defaults to name of the referenced model
 					asReverse: 'TasksToDo', // defaults to name of this model
-					through: 'UserTask' // defaults to undefined, creating through table automatically
+					through: 'UserTask', // defaults to undefined, creating through table automatically
+					skipFields: true // defaults to value of options.skipFieldsOnThrough (see below)
 				}
 			}
 		},
@@ -289,6 +290,13 @@ If a function is provided in place of an object, the function is called to get t
 	// Equivalent to e.g.
 	// Task.belongsTo(User, { as: 'createdByUser' });
 	// User.hasMany(Task, { as: 'createdTasks' });
+
+To skip adding extra fields on a particular model, set `skipFields` to `true` in that model's options.
+
+#### skipFieldsOnThrough
+
+When `true`, does not add extra fields defined with `options.fields` to through tables.
+Defaults to `false`.
 
 #### labels
 
