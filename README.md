@@ -291,7 +291,8 @@ If a function is provided in place of an object, the function is called to get t
 	// Task.belongsTo(User, { as: 'createdByUser' });
 	// User.hasMany(Task, { as: 'createdTasks' });
 
-To skip adding extra fields on a particular model, set `skipFields` to `true` in that model's options.
+To skip adding all extra fields on a particular model, set `skipFields` to `true` in that model's options.
+To skip adding a particular extra field, include that field in the model's `fields` object to `false` or `null`.
 
 #### skipFieldsOnThrough
 
