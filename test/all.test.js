@@ -11,7 +11,8 @@ var chai = require('chai'),
 	Sequelize = Support.Sequelize,
 	Promise = Sequelize.Promise,
 	Utils = Sequelize.Utils,
-	_ = Utils._;
+	_ = Utils._,
+	pathModule = require('path');
 
 // init
 
@@ -214,6 +215,15 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(this.sequelize.models.User.associations.OwnedTasks.as).to.equal('OwnedTasks');
 				});
 			});
+		});
+	});
+	
+	describe('defineFromFolder', function() {
+		it('defines all models', function() {
+			this.sequelize.defineFromFolder(pathModule.join(__dirname, '../testExample'));
+			
+			expect(this.sequelize.models.Task2).to.be.ok;
+			expect(this.sequelize.models.User2).to.be.ok;
 		});
 	});
 });
