@@ -10,9 +10,9 @@ This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functi
 
 API is stable.
 
-All features listed below are implemented but it's not tested so not quite ready for use yet. Tests to follow shortly.
+All features listed below are implemented. Basic functionality is tested, but no tests for options as yet - will follow shortly.
 
-Designed to be used with Sequelize v2.0.0 branch, but may work mostly on Sequelize v1.7 too.
+Designed to be used with Sequelize v2.0.0 branch, but may work on Sequelize v1.7 too.
 
 ## Usage
 
@@ -320,7 +320,7 @@ Defaults to `false` (default Sequelize behaviour).
 Use `npm test` to run the tests.
 Requires a database called 'sequelize_test' and a db user 'sequelize_test', password 'sequelize_test'.
 
-Test coverage is very minimal at present.
+Tests cover only basic usage at present.
 
 ## Changelog
 
@@ -328,7 +328,7 @@ See changelog.md
 
 ## TODO
 
-* Write tests
+* Write tests for all options
 * Make autoAssociate handle underscored style as well as camelcase
 
 ## Issues
