@@ -72,10 +72,11 @@ Example of a model file:
 
 `defineFromFolder()` uses [require-folder-tree](https://github.com/overlookmotel/require-folder-tree/) to load the files from the folder. You can pass options to `require-folder-tree` for how the files are loaded by including an object `loadOptions` in `options` passed to `defineFromFolder()`. e.g.:
 
-	// Load files in sub-folders as models with name prefixed by folder name in camelcase
-	// e.g. `user/permission.js` defines model `userPermission`
+	// Load files in sub-folders as models with name prefixed by folder name
+	// e.g. `User/Permission.js` defines model `UserPermission`
 	sequelize.defineFromFolder( path.join( __dirname, 'models' ), {
 		loadOptions: {
+			// NB flatten is always set to `true`
 			flattenPrefix: true
 		}
 	} );
