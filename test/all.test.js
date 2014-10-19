@@ -26,12 +26,12 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 			var definitions = {
 				User: {
 					fields: {
-						name: {type: Sequelize.STRING(50)}
+						name: Sequelize.STRING(50)
 					}
 				},
 				Task: {
 					fields: {
-						name: {type: Sequelize.STRING(50)}
+						name: Sequelize.STRING(50)
 					}
 				}
 			};
