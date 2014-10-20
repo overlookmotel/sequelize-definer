@@ -197,7 +197,6 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					
 					var models = this.sequelize.models;
 					expect(models.Task.associations.TasksUsers).to.be.ok;
 					expect(models.Task.associations.TasksUsers.target).to.equal(models.User);
@@ -206,6 +205,11 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(models.User.associations.TasksUsers).to.be.ok;
 					expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
 					expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+					
+					expect(models.TaskUser).to.be.ok;
+					expect(models.TaskUser.attributes.TaskId).to.be.ok;
+					expect(models.TaskUser.attributes.UserId).to.be.ok;
+					expect(models.TaskUser.attributes.id).not.to.exist;
 				});
 				
 				it('uses as and asReverse', function() {
@@ -234,10 +238,15 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(models.Task.associations.Owners).to.be.ok;
 					expect(models.Task.associations.Owners.target).to.equal(models.User);
 					expect(models.Task.associations.Owners.as).to.equal('Owners');
+					
 					expect(models.User.associations.OwnedTasks).to.be.ok;
 					expect(models.User.associations.OwnedTasks.target).to.equal(models.Task);
 					expect(models.User.associations.OwnedTasks.as).to.equal('OwnedTasks');
 					
+					expect(models.TaskUser).to.be.ok;
+					expect(models.TaskUser.attributes.UserId).to.be.ok;
+					expect(models.TaskUser.attributes.TaskId).to.be.ok;
+					expect(models.TaskUser.attributes.id).not.to.exist;
 				});
 			});
 		});
