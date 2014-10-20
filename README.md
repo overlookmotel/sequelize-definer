@@ -262,6 +262,8 @@ When `true`, automatically creates associations where a column name matches the 
 	// Task.belongsTo(User);
 	// User.hasMany(Task);
 
+`autoAssociate` option can also be overridden on an individual model in that model's options.
+
 #### fields
 
 Adds the fields provided to every model defined.
@@ -304,6 +306,8 @@ Defaults to `false`.
 
 When `true`, creates a `label` attribute on each field, with a human-readable version of the field name.
 Defaults to `false`.
+
+`labels` option can also be overridden on an individual model in that model's options.
 
 #### freezeTableName
 
