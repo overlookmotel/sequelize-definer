@@ -262,6 +262,8 @@ When `true`, automatically creates associations where a column name matches the 
 	// Task.belongsTo(User);
 	// User.hasMany(Task);
 
+To prevent a particular field being auto-associated, set `reference` on the field to `null`.
+
 `autoAssociate` option can also be overridden on an individual model in that model's options.
 
 #### fields
@@ -295,7 +297,7 @@ If a function is provided in place of an object, the function is called to get t
 	// User.hasMany(Task, { as: 'createdTasks' });
 
 To skip adding all extra fields on a particular model, set `skipFields` to `true` in that model's options.
-To skip adding a particular extra field, include that field in the model's `fields` object to `false` or `null`.
+To skip adding a particular extra field, include that field in the model's `fields` object as `null`.
 
 #### skipFieldsOnThrough
 
