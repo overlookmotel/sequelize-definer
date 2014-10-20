@@ -248,6 +248,46 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(models.TaskUser.attributes.TaskId).to.be.ok;
 					expect(models.TaskUser.attributes.id).not.to.exist;
 				});
+				
+				it('uses through', function() {
+					var definitions = {
+						User: {
+							fields: {
+								name: Sequelize.STRING(50)
+							}
+						},
+						Task: {
+							fields: {
+								name: Sequelize.STRING(50)
+							},
+							manyToMany: {
+								User: {
+									through: 'Join'
+								}
+							}
+						},
+						Join: {
+							fields: {
+								status: Sequelize.STRING(50)
+							}
+						}
+					};
+					
+					this.sequelize.defineAll(definitions);
+					
+					var models = this.sequelize.models;
+					expect(models.Task.associations.Joins).to.be.ok;
+					expect(models.Task.associations.Joins.target).to.equal(models.User);
+					expect(models.Task.associations.Joins.as).to.equal('Users');
+					
+					expect(models.User.associations.Joins).to.be.ok;
+					expect(models.User.associations.Joins.target).to.equal(models.Task);
+					expect(models.User.associations.Joins.as).to.equal('Tasks');
+					
+					expect(models.Join.attributes.UserId).to.be.ok;
+					expect(models.Join.attributes.TaskId).to.be.ok;
+					expect(models.Join.attributes.id).not.to.exist;
+				});
 			});
 		});
 	});
