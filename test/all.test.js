@@ -22,6 +22,12 @@ chai.config.includeStack = true;
 // tests
 
 describe(Support.getTestDialectTeaser("Tests"), function () {
+	beforeEach(function() {
+		_.forIn(this.sequelize.models, function(model) {
+			this.sequelize.modelManager.removeDAO(model);
+		}.bind(this));
+	});
+	
 	describe('defineAll', function() {
 		it('defines all models', function() {
 			var definitions = {
