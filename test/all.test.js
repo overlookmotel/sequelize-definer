@@ -243,10 +243,10 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(models.User.associations.OwnedTasks.target).to.equal(models.Task);
 					expect(models.User.associations.OwnedTasks.as).to.equal('OwnedTasks');
 					
-					expect(models.TaskUser).to.be.ok;
-					expect(models.TaskUser.attributes.UserId).to.be.ok;
-					expect(models.TaskUser.attributes.TaskId).to.be.ok;
-					expect(models.TaskUser.attributes.id).not.to.exist;
+					expect(models.TaskOwner).to.be.ok;
+					expect(models.TaskOwner.attributes.UserId).to.be.ok;
+					expect(models.TaskOwner.attributes.TaskId).to.be.ok;
+					expect(models.TaskOwner.attributes.id).not.to.exist;
 				});
 				
 				it('uses through', function() {
