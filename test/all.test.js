@@ -23,7 +23,9 @@ chai.config.includeStack = true;
 
 describe(Support.getTestDialectTeaser("Tests"), function () {
 	beforeEach(function() {
-		_.forIn(this.sequelize.models, function(model) {
+		this.models = this.sequelize.models;
+		
+		_.forIn(this.models, function(model) {
 			this.sequelize.modelManager.removeDAO(model);
 		}.bind(this));
 	});
@@ -46,7 +48,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 			this.sequelize.defineAll(definitions);
 			
 			_.forIn(definitions, function(definition, modelName) {
-				expect(this.sequelize.models[modelName]).to.be.ok;
+				expect(this.models[modelName]).to.be.ok;
 			}.bind(this));
 		});
 		
@@ -72,7 +74,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.User).to.be.ok;
 					expect(models.Task.associations.User.target).to.equal(models.User);
 					expect(models.Task.associations.User.isSingleAssociation).to.be.true;
@@ -104,7 +106,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.Owner).to.be.ok;
 					expect(models.Task.associations.Owner.target).to.equal(models.User);
 					expect(models.Task.associations.Owner.as).to.equal('Owner');
@@ -135,7 +137,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.User).to.be.ok;
 					expect(models.Task.associations.User.target).to.equal(models.User);
 					expect(models.Task.associations.User.isSingleAssociation).to.be.true;
@@ -166,7 +168,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.Owner).to.be.ok;
 					expect(models.Task.associations.Owner.target).to.equal(models.User);
 					expect(models.Task.associations.Owner.as).to.equal('Owner');
@@ -197,7 +199,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.TasksUsers).to.be.ok;
 					expect(models.Task.associations.TasksUsers.target).to.equal(models.User);
 					expect(models.Task.associations.TasksUsers.isMultiAssociation).to.be.true;
@@ -234,7 +236,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.Owners).to.be.ok;
 					expect(models.Task.associations.Owners.target).to.equal(models.User);
 					expect(models.Task.associations.Owners.as).to.equal('Owners');
@@ -275,7 +277,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					
 					this.sequelize.defineAll(definitions);
 					
-					var models = this.sequelize.models;
+					var models = this.models;
 					expect(models.Task.associations.Joins).to.be.ok;
 					expect(models.Task.associations.Joins.target).to.equal(models.User);
 					expect(models.Task.associations.Joins.as).to.equal('Users');
@@ -296,8 +298,8 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 		it('defines all models', function() {
 			this.sequelize.defineFromFolder(pathModule.join(__dirname, '../testExample'));
 			
-			expect(this.sequelize.models.Task2).to.be.ok;
-			expect(this.sequelize.models.User2).to.be.ok;
+			expect(this.models.Task2).to.be.ok;
+			expect(this.models.User2).to.be.ok;
 		});
 	});
 });
