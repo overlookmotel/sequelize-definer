@@ -49,6 +49,7 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 			
 			_.forIn(definitions, function(definition, modelName) {
 				expect(this.models[modelName]).to.be.ok;
+				expect(this.models[modelName].tableName).to.equal(modelName + 's');
 			}.bind(this));
 		});
 		
