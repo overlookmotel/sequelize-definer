@@ -148,6 +148,35 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
 				});
 				
+				it('deduces foreign key', function() {
+					var definitions = {
+						User: {
+							fields: {
+								name: Sequelize.STRING(50)
+							}
+						},
+						Task: {
+							fields: {
+								name: Sequelize.STRING(50),
+								WorkerId: {
+									reference: 'User'
+								}
+							}
+						}
+					};
+					
+					this.sequelize.defineAll(definitions);
+					
+					var models = this.models;
+					expect(models.Task.associations.Worker).to.be.ok;
+					expect(models.Task.associations.Worker.target).to.equal(models.User);
+					expect(models.Task.associations.Worker.isSingleAssociation).to.be.true;
+					
+					expect(models.User.associations.TasksUsers).to.be.ok;
+					expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
+					expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+				});
+				
 				it('uses as and asReverse', function() {
 					var definitions = {
 						User: {
@@ -291,6 +320,229 @@ describe(Support.getTestDialectTeaser("Tests"), function () {
 					expect(models.Join.attributes.TaskId).to.be.ok;
 					expect(models.Join.attributes.id).not.to.exist;
 				});
+				
+				describe('options', function() {
+					it('associateThrough', function() {
+						var definitions = {
+							User: {
+								fields: {
+									name: Sequelize.STRING(50)
+								}
+							},
+							Task: {
+								fields: {
+									name: Sequelize.STRING(50)
+								},
+								manyToMany: {
+									User: true
+								}
+							}
+						};
+						
+						this.sequelize.defineAll(definitions, {associateThrough: true});
+						
+						var models = this.models;
+						expect(models.TaskUser.associations.User).to.be.ok;
+						expect(models.TaskUser.associations.User.target).to.equal(models.User);
+						expect(models.TaskUser.associations.User.as).to.equal('User');
+						
+						expect(models.TaskUser.associations.Task).to.be.ok;
+						expect(models.TaskUser.associations.Task.target).to.equal(models.Task);
+						expect(models.TaskUser.associations.Task.as).to.equal('Task');
+					});
+					
+					describe('skipFieldsOnThrough', function() {
+						it('fields added if false', function() {
+							var definitions = {
+								User: {
+									fields: {
+										name: Sequelize.STRING(50)
+									}
+								},
+								Task: {
+									fields: {
+										name: Sequelize.STRING(50)
+									},
+									manyToMany: {
+										User: true
+									}
+								}
+							};
+							
+							this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}});
+							
+							expect(this.models.TaskUser.attributes.moon).to.be.ok;
+						});
+						
+						it('fields not added if true', function() {
+							var definitions = {
+								User: {
+									fields: {
+										name: Sequelize.STRING(50)
+									}
+								},
+								Task: {
+									fields: {
+										name: Sequelize.STRING(50)
+									},
+									manyToMany: {
+										User: true
+									}
+								}
+							};
+							
+							this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}, skipFieldsOnThrough: true});
+							
+							expect(this.models.TaskUser.attributes.moon).not.to.exist;
+						});
+					});
+					
+					it('camelThrough', function() {
+						var definitions = {
+							user: {
+								fields: {
+									name: Sequelize.STRING(50)
+								}
+							},
+							task: {
+								fields: {
+									name: Sequelize.STRING(50)
+								},
+								manyToMany: {
+									user: true
+								}
+							}
+						};
+						
+						this.sequelize.defineAll(definitions, {camelThrough: true});
+						
+						expect(this.models.taskUser).to.be.ok;
+					});
+				});
+			});
+		});
+		
+		describe('options', function() {
+			it('primaryKey', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {primaryKey: 'foo'});
+				
+				expect(this.models.User.attributes.foo).to.be.ok;
+				expect(this.models.User.attributes.foo.primaryKey).to.be.true;
+			});
+			
+			it('primaryKeyType', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {primaryKeyType: Sequelize.STRING});
+				
+				expect(this.models.User.attributes.id).to.be.ok;
+				expect(this.models.User.attributes.id.primaryKey).to.be.true;
+				expect(this.models.User.attributes.id.type).to.equal(Sequelize.STRING);
+			});
+			
+			it('primaryKeyFirst', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {primaryKeyFirst: true});
+				
+				expect(this.models.User.attributes.id).to.be.ok;
+				expect(this.models.User.attributes.id.primaryKey).to.be.true;
+				expect(Object.keys(this.models.User.attributes)[0]).to.equal('id');
+			});
+			
+			it('autoAssociate', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					},
+					Task: {
+						fields: {
+							name: Sequelize.STRING(50),
+							UserId: {}
+						}
+					}
+				};
+				
+				this.sequelize.defineAll(definitions, {autoAssociate: true});
+				
+				var models = this.models;
+				expect(models.Task.associations.User).to.be.ok;
+				expect(models.Task.associations.User.target).to.equal(models.User);
+				expect(models.Task.associations.User.isSingleAssociation).to.be.true;
+				
+				expect(models.User.associations.TasksUsers).to.be.ok;
+				expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
+				expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+			});
+			
+			it('fields', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}});
+				
+				expect(this.models.User.attributes.moon).to.be.ok;
+			});
+			
+			it('labels', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50),
+							numberOfUnits: Sequelize.INTEGER
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {labels: true});
+				
+				var attributes = this.models.User.attributes;
+				expect(attributes.id.label).to.equal('ID');
+				expect(attributes.name.label).to.equal('Name');
+				expect(attributes.numberOfUnits.label).to.equal('Number Of Units');
+				expect(attributes.createdAt.label).to.equal('Created At');
+				expect(attributes.updatedAt.label).to.equal('Updated At');
+			});
+			
+			it('freezeTableName', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {freezeTableName: true});
+				
+				expect(this.models.User.tableName).to.equal('User');
 			});
 		});
 	});
