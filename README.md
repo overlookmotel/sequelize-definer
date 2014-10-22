@@ -209,6 +209,8 @@ Options can also be passed:
 
 All options below apply to both `defineAll()` and `defineFromFolder()`.
 
+Options can also be applied on a model-by-model basis in each model's options, except where noted below. Options set on a particular model override the global options.
+
 #### primaryKey
 
 Sets the name of the primary key attribute automatically created on all models which have no primary key defined.
@@ -273,8 +275,6 @@ When `true`, automatically creates associations where a column name matches the 
 
 To prevent a particular field being auto-associated, set `reference` on the field to `null`.
 
-`autoAssociate` option can also be overridden on an individual model in that model's options.
-
 #### fields
 
 Adds the fields provided to every model defined.
@@ -313,23 +313,24 @@ To skip adding a particular extra field, include that field in the model's `fiel
 When `true`, does not add extra fields defined with `options.fields` to through tables.
 Defaults to `false`.
 
+To skip adding extra fields on a particular many-to-many association's through table, set `skipFields` in the `manyToMany` object's options.
+
 #### labels
 
 When `true`, creates a `label` attribute on each field, with a human-readable version of the field name.
 Defaults to `false`.
 
-`labels` option can also be overridden on an individual model in that model's options.
-
 #### freezeTableName
 
 When `true`, table names are the same as model names provided, not pluralized as per default Sequelize behaviour.
-Can also be defined per model by setting the option in the individual model definition.
 Defaults to global define option set in `new Sequelize()`.
 
 #### camelThrough
 
 When `true`, creates through model names in camelcase (i.e. 'taskUser' rather than 'taskuser').
 Defaults to `false` (default Sequelize behaviour).
+
+`camelThrough` option can also be overridden on an individual many-to-many join with the `manyToMany` object's `camel` option.
 
 ## Tests
 
