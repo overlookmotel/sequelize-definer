@@ -237,6 +237,15 @@ Defaults to `Sequelize.INTEGER` (default Sequelize behaviour).
 When `true`, creates the primary key as the first column in the table.
 Defaults to `false`.
 
+#### associateThrough
+
+When `true`, associates through tables with their joined models.
+Defaults to `false`.
+
+This allows you to do e.g. `TaskUser.findAll( { include: [ Task, User ] } )`
+
+`associateThrough` option can also be overridden on an individual many-to-many join with the `manyToMany` object's `associate` option.
+
 #### autoAssociate
 
 When `true`, automatically creates associations where a column name matches the model name + primary key of another model. No need to specify `reference` as in the association examples above. If you have a standardized naming convention, this makes it really easy and natural to define associations. Defaults to `false`.
