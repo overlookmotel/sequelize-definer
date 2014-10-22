@@ -10,3 +10,13 @@
 * `skipFields` option
 * Bug fixes
 * Tests for basic functionality
+
+## 0.1.0
+
+* All options definable in individual model options
+* All input will not be touched (cloned before internal modification)
+* Labels for createdAt, updatedAt, deletedAt fields
+* Support for `underscored` and `underscoredAll` options
+* Bug fixes
+* Changed README for flatten options passed to require-folder-tree
+* Tests for all options
