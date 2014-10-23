@@ -21,7 +21,7 @@ chai.config.includeStack = true;
 
 // tests
 
-describe(Support.getTestDialectTeaser("Tests"), function () {
+describe(Support.getTestDialectTeaser('Tests'), function () {
 	beforeEach(function() {
 		this.models = this.sequelize.models;
 		
