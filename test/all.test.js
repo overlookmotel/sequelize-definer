@@ -15,7 +15,6 @@ var chai = require('chai'),
 	pathModule = require('path');
 
 // init
-
 chai.use(promised);
 chai.config.includeStack = true;
 
