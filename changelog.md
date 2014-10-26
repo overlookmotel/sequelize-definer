@@ -20,3 +20,9 @@
 * Bug fixes
 * Changed README for flatten options passed to require-folder-tree
 * Tests for all options
+
+## 0.1.1
+
+* Minor code tidy
+* Added licenses to package.json
+* Sequelize peer dependency
