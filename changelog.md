@@ -26,3 +26,8 @@
 * Minor code tidy
 * Added licenses to package.json
 * Sequelize peer dependency
+
+## 0.1.2
+
+* Added own lodash dependency, rather than using `Sequelize.Utils._`
+* Moved define functions into own files
