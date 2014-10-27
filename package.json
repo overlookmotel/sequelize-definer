@@ -14,6 +14,7 @@
     "url": "https://github.com/overlookmotel/sequelize-definer/issues"
   },
   "dependencies": {
+    "lodash": "2.4.1",
     "require-folder-tree": "1.0.x"
   },
   "peerDependencies": {
@@ -24,8 +25,7 @@
     "chai": "*",
     "chai-as-promised": "*",
     "sequelize": "2.0.x",
-    "mysql": "~2.4.1",
-    "lodash": "2.4.1"
+    "mysql": "~2.4.1"
   },
   "keywords": [
     "sequelize",
