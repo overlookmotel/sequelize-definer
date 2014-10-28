@@ -31,3 +31,10 @@
 
 * Added own lodash dependency, rather than using `Sequelize.Utils._`
 * Moved define functions into own files
+
+## 0.1.3
+
+* JSHint included in tests
+* Set versions for mocha & chai dependencies
+* Travis integration
+* Updated README
