@@ -45,3 +45,9 @@
 * Tests db user sequelize_test
 * Travis uses db user travis
 * Updated README
+
+## 0.2.0
+
+Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite)
+
+* Updated README
