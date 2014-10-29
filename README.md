@@ -338,7 +338,7 @@ Defaults to `false` (default Sequelize behaviour).
 ## Tests
 
 Use `npm test` to run the tests.
-Requires a database called 'sequelize_test' and a db user 'travis' with no password.
+Requires a database called 'sequelize_test' and a db user 'sequelize_test' with no password.
 
 ## Changelog
 
