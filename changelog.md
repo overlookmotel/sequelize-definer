@@ -51,3 +51,8 @@
 Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite)
 
 * Updated README
+
+## 0.2.1
+
+* `labels` option inherits from global options defined with `new Sequelize()`
+* `humanize` utility function handles underscore style
