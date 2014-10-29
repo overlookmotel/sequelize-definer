@@ -321,17 +321,17 @@ To skip adding extra fields on a particular many-to-many association's through t
 #### labels
 
 When `true`, creates a `label` attribute on each field, with a human-readable version of the field name.
-Defaults to `false`.
+Defaults to global define option set in `new Sequelize()` or `false`.
 
 #### freezeTableName
 
 When `true`, table names are the same as model names provided, not pluralized as per default Sequelize behaviour.
-Defaults to global define option set in `new Sequelize()`.
+Defaults to global define option set in `new Sequelize()` or `false`.
 
 #### camelThrough
 
 When `true`, creates through model names in camelcase (i.e. 'taskUser' rather than 'taskuser').
-Defaults to `false` (default Sequelize behaviour).
+Defaults to global define option set in `new Sequelize()` or `false` (default Sequelize behaviour).
 
 `camelThrough` option can also be overridden on an individual many-to-many join with the `manyToMany` object's `camel` option.
 
