@@ -8,7 +8,7 @@ This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functi
 
 ## Current status
 
-[![Build Status](https://secure.travis-ci.org/overlookmotel/sequelize-definer.png)](http://travis-ci.org/overlookmotel/sequelize-definer)
+[![Build Status](https://secure.travis-ci.org/overlookmotel/sequelize-definer.png?branch=master)](http://travis-ci.org/overlookmotel/sequelize-definer)
 [![Dependency Status](https://david-dm.org/overlookmotel/sequelize-definer.png)](https://david-dm.org/overlookmotel/sequelize-definer)
 
 API is stable. All features and options are fairly well tested. Works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite).
