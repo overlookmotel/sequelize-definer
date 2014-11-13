@@ -62,3 +62,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Bug fix: utility function `functionValue` was not passing arguments
 * Update db library dependencies in line with Sequelize
 * Amend travis config file to use `npm install` to install Sequelize's dependencies after getting latest master from git
+* Added `editorconfig` file
