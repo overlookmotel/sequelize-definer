@@ -57,7 +57,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * `labels` option inherits from global options defined with `new Sequelize()`
 * `humanize` utility function handles underscore style
 
-## Next
+## 0.2.2
 
 * Bug fix: utility function `functionValue` was not passing arguments
 * Update db library dependencies in line with Sequelize
