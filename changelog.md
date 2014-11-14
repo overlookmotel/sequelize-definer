@@ -62,6 +62,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Bug fix: utility function `functionValue` was not passing arguments
 * Update db library dependencies in line with Sequelize
 * Remove definer-related options from options passed to `Sequelize#define()`
+* Where a model field is a reference to another model (an ID for association), `reference` attribute of the field set to model name of referenced model
 * `humanize()` utility function handles empty string/null/undefined
 * Amend travis config file to use `npm install` to install Sequelize's dependencies after getting latest master from git
 * Added `editorconfig` file
