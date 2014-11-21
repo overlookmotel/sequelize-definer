@@ -66,3 +66,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * `humanize()` utility function handles empty string/null/undefined
 * Amend travis config file to use `npm install` to install Sequelize's dependencies after getting latest master from git
 * Added `editorconfig` file
+
+## Next
+
+* Code tidy
