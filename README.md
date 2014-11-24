@@ -237,6 +237,12 @@ Defaults to `Sequelize.INTEGER` (default Sequelize behaviour).
 
 	sequelize.defineAll( definitions, { primaryKeyType: Sequelize.INTEGER.UNSIGNED });
 
+#### primaryKeyThrough
+
+When `true`, creates an `id` column as primary key in through tables.
+When `false`, there is no `id` column and the primary key consists of the columns referring to the models being associated by the through table (usual Sequelize behaviour).
+Defaults to `false`.
+
 #### primaryKeyFirst
 
 When `true`, creates the primary key as the first column in the table.
