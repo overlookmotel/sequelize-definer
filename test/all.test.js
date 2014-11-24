@@ -320,6 +320,29 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 				
 				describe('options', function() {
+					it('primaryKeyThrough', function() {
+						var definitions = {
+							User: {
+								fields: {
+									name: Sequelize.STRING(50)
+								}
+							},
+							Task: {
+								fields: {
+									name: Sequelize.STRING(50)
+								},
+								manyToMany: {
+									User: true
+								}
+							}
+						};
+						
+						this.sequelize.defineAll(definitions, {primaryKeyThrough: true});
+						
+						var models = this.models;
+						expect(models.TaskUser.attributes.id).to.be.ok;
+					});
+					
 					it('associateThrough', function() {
 						var definitions = {
 							User: {
