@@ -67,7 +67,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Amend travis config file to use `npm install` to install Sequelize's dependencies after getting latest master from git
 * Added `editorconfig` file
 
-## Next
+## 0.2.3
 
 * Code tidy
 * Save `reference` to fields in through models if `associateThrough` option set
