@@ -70,3 +70,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## Next
 
 * Code tidy
+* Save `reference` to fields in through models if `associateThrough` option set
