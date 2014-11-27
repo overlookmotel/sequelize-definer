@@ -77,3 +77,5 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * `primaryKeyThrough` option
 
 ## Next
+
+* Temporary patch for inflection's incorrect pluralization of "permission" pending PR to fix it permanently
