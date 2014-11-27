@@ -81,6 +81,6 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Temporary patch for inflection's incorrect pluralization of "permission" pending PR to fix it permanently
 * Specify to use latest Sequelize version from Github in package.json rather than .travis.yml
 
-## Next
+## 0.2.6
 
 * Remove temporary patch for inflection's incorrect pluralization of "permission"
