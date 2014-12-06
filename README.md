@@ -15,7 +15,7 @@ API is stable. All features and options are fairly well tested. Works with all d
 
 Designed to be used with Sequelize v2.0.0 branch, but may work on Sequelize v1.7 too - please let me know if you have success with v1.7.
 
-Requires recent master of Sequelize v2.x dev branch, more recent than 28 Oct 2014. This is more recent than v2.0.0-rc2 which is latest available on NPM. i.e. you need to get latest Sequelize from Github.
+Requires Sequelize v2.0.0-rc3 or later.
 
 ## Usage
 

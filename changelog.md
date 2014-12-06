@@ -84,3 +84,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## 0.2.6
 
 * Remove temporary patch for inflection's incorrect pluralization of "permission"
+
+## Next
+
+* Updated sequelize dependency to v2.0.0-rc3
