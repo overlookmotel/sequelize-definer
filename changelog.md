@@ -85,7 +85,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 * Remove temporary patch for inflection's incorrect pluralization of "permission"
 
-## Next
+## 0.2.7
 
 * Updated sequelize dependency to v2.0.0-rc3
 * Only auto-increment on primary key if INTEGER type
