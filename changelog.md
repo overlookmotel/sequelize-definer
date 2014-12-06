@@ -88,3 +88,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## Next
 
 * Updated sequelize dependency to v2.0.0-rc3
+* JSHint ignores redefinition of `Promise`
