@@ -84,11 +84,11 @@ Example of a model file:
 		}
 	});
 
-	// e.g. `user.js` defines model `User` with capitalize option
+	// e.g. `user-task.js` defines model `UserTask` with kebabToPascal option
 	sequelize.defineFromFolder( path.join( __dirname, 'models' ), {
 		loadOptions: {
 			// NB flatten is always set to `true`
-			capitalize: true
+			kebabToPascal: true
 		}
 	});
 
