@@ -95,3 +95,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## 0.2.8
 
 * Lock sequelize dependency to 2.0.0-rc3 (errors with rc4)
+
+## Next
+
+* Lock sequelize dev dependency to 2.0.0-rc3
