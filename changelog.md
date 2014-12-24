@@ -91,3 +91,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Only auto-increment on primary key if INTEGER type
 * Default value for UUID primary key fields
 * JSHint ignores redefinition of `Promise`
+
+## Next
+
+* Lock sequelize dependency to 2.0.0-rc3 (errors with rc4)
