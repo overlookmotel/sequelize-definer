@@ -353,3 +353,7 @@ See changelog.md
 ## Issues
 
 If you discover a bug, please raise an issue on Github. https://github.com/overlookmotel/sequelize-definer/issues
+
+### Known issues
+
+* Does not create foreign key constraint on a 'hasOne' relation defined by setting 'reference' in field definition
