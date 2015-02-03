@@ -66,7 +66,7 @@ Example of a model file:
 
 	// User.js
 	var Sequelize = require('sequelize');
-	
+
 	module.exports = {
 		fields: {
 			name: Sequelize.STRING
@@ -123,7 +123,7 @@ For a one-to-one association (i.e. hasOne rather than hasMany), define `referenc
 			}
 		} }
 	});
-	
+
 	// Equivalent to:
 	// Task.belongsTo(User);
 	// User.hasOne(Task);
@@ -147,11 +147,11 @@ Other options...
 			}
 		} }
 	});
-	
+
 	// Equivalent to:
 	// Task.belongsTo(User, { as: 'Owner', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 	// User.hasMany(Task, { as: 'TasksToDo', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
-	
+
 	// Then you can do:
 	// user.getTasksToDo()
 	// task.getOwner()
@@ -203,7 +203,7 @@ Options can also be passed:
 			}
 		}
 	});
-	
+
 	// Equivalent to:
 	// Task.hasMany(User, { through: 'UserTask', onDelete: 'RESTRICT', onUpdate: 'RESTRICT', as: 'Worker' });
 	// User.hasMany(Task, { through: 'UserTask', onDelete: 'RESTRICT', onUpdate: 'RESTRICT', as: 'TasksToDo' });
@@ -277,7 +277,7 @@ When `true`, automatically creates associations where a column name matches the 
 		// options
 		autoAssociate: true
 	});
-	
+
 	// This automatically runs
 	// Task.belongsTo(User);
 	// User.hasMany(Task);
@@ -309,7 +309,7 @@ If a function is provided in place of an object, the function is called to get t
 			}
 		}
 	});
-	
+
 	// Equivalent to e.g.
 	// Task.belongsTo(User, { as: 'createdByUser' });
 	// User.hasMany(Task, { as: 'createdTasks' });
