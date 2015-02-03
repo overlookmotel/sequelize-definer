@@ -104,3 +104,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 * Set sequelize dependency to ~2.0.0-rc3 (tilde)
 * README known issue hasOne foreign keys
+* README notes on contribution

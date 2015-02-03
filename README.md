@@ -357,3 +357,9 @@ If you discover a bug, please raise an issue on Github. https://github.com/overl
 ### Known issues
 
 * Does not create foreign key constraint on a 'hasOne' relation defined by setting 'reference' in field definition
+
+## Contribution
+
+Pull requests are very welcome. Please fork and issue PRs on `dev` branch.
+
+`master` branch is always the most recent npm release. All new code is first added to `dev` branch for testing and only merged into `master` when it's ready to be published to npm.
