@@ -106,3 +106,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * README known issue hasOne foreign keys
 * README notes on contribution
 * Remove all trailing whitespace
+* Travis runs on new container infrastructure
