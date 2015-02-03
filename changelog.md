@@ -107,3 +107,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * README notes on contribution
 * Remove all trailing whitespace
 * Travis runs on new container infrastructure
+* Update db dev dependencies in line with Sequelize 2.0.0-rc8
