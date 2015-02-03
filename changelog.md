@@ -100,7 +100,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 * Lock sequelize dev dependency to 2.0.0-rc3
 
-## Next
+## 0.2.45
 
 * Set sequelize dependency to ~2.0.0-rc3 (tilde)
 * README known issue hasOne foreign keys
