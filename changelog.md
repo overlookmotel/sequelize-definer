@@ -116,3 +116,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Update dev dependencies in line with sequelize v2.0.5
 * Update test support files in line with sequelize v2.0.5
 * Code tidy in test/support.js
+* Travis runs tests against node 0.10 and 0.12
