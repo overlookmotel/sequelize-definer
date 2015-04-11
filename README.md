@@ -177,8 +177,8 @@ See `autoAssociate` option below for an even easier way to handle associations.
 	});
 
 	// Equivalent to:
-	// Task.hasMany(User);
-	// User.hasMany(Task);
+	// Task.belongsToMany(User);
+	// User.belongsToMany(Task);
 
 Options can also be passed:
 
@@ -205,8 +205,8 @@ Options can also be passed:
 	});
 
 	// Equivalent to:
-	// Task.hasMany(User, { through: 'UserTask', onDelete: 'RESTRICT', onUpdate: 'RESTRICT', as: 'Worker' });
-	// User.hasMany(Task, { through: 'UserTask', onDelete: 'RESTRICT', onUpdate: 'RESTRICT', as: 'TasksToDo' });
+	// Task.belongsToMany(User, { through: 'UserTask', onDelete: 'RESTRICT', onUpdate: 'RESTRICT', as: 'Worker' });
+	// User.belongsToMany(Task, { through: 'UserTask', onDelete: 'RESTRICT', onUpdate: 'RESTRICT', as: 'TasksToDo' });
 
 ### Options
 
