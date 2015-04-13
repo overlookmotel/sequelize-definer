@@ -110,7 +110,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Update db dev dependencies in line with Sequelize 2.0.0-rc8
 * Update dev dependencies
 
-## Next
+## 0.2.46
 
 * Update sequelize dependency to v2.0.0+
 * Update dev dependencies in line with sequelize v2.0.5
