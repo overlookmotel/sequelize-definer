@@ -11,11 +11,9 @@ This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functi
 [![Build Status](https://secure.travis-ci.org/overlookmotel/sequelize-definer.png?branch=master)](http://travis-ci.org/overlookmotel/sequelize-definer)
 [![Dependency Status](https://david-dm.org/overlookmotel/sequelize-definer.png)](https://david-dm.org/overlookmotel/sequelize-definer)
 
-API is stable. All features and options are fairly well tested. Works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite).
+API is stable. All features and options are fairly well tested. Works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite, Microsoft SQL Server).
 
-Designed to be used with Sequelize v2.0.0 branch, but may work on Sequelize v1.7 too - please let me know if you have success with v1.7.
-
-Requires Sequelize v2.0.0-rc3 or later.
+Designed to be used with Sequelize v2.0.0+, but may work on Sequelize v1.7 too - please let me know if you have success with v1.7.
 
 ## Usage
 
