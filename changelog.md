@@ -118,6 +118,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Support for Microsoft SQL Server
 * Remove use of deprecated sequelize API
 * Code tidy in test/support.js
+* Fix tests for Sequelize v2
 * Travis runs tests against node 0.10 and 0.12
 * Travis uses correct database users
 * README update

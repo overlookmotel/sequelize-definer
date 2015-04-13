@@ -468,11 +468,11 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					}
 				};
 
-				this.sequelize.defineAll(definitions, {primaryKeyType: Sequelize.STRING});
+				this.sequelize.defineAll(definitions, {primaryKeyType: Sequelize.STRING(10)});
 
 				expect(this.models.User.attributes.id).to.be.ok;
 				expect(this.models.User.attributes.id.primaryKey).to.be.true;
-				expect(this.models.User.attributes.id.type).to.equal(Sequelize.STRING);
+				expect(this.models.User.attributes.id.type).to.be.instanceof(Sequelize.STRING);
 			});
 
 			it('primaryKeyFirst', function() {
