@@ -124,6 +124,6 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * README update
 * README code examples tagged as Javascript
 
-## Next
+## 0.2.47
 
 * Fix bug with labels on timestamp fields
