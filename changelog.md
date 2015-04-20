@@ -123,3 +123,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Travis uses correct database users
 * README update
 * README code examples tagged as Javascript
+
+## Next
+
+* Fix bug with labels on timestamp fields
