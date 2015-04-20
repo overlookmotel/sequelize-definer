@@ -263,6 +263,15 @@ Defaults to `Sequelize.INTEGER` (default Sequelize behaviour).
 sequelize.defineAll( definitions, { primaryKeyType: Sequelize.INTEGER.UNSIGNED });
 ```
 
+#### primaryKeyAttributes
+
+Define additional attributes for primary keys.
+Defaults to `undefined` (default Sequelize behaviour).
+
+```js
+sequelize.defineAll( definitions, { primaryKeyAttributes: { defaultValue: Sequelize.UUIDV4 } });
+```
+
 #### primaryKeyThrough
 
 When `true`, creates an `id` column as primary key in through tables.

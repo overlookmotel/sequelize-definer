@@ -475,6 +475,22 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				expect(this.models.User.attributes.id.type).to.be.instanceof(Sequelize.STRING);
 			});
 
+			it('primaryKeyAttributes', function() {
+				var definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					}
+				};
+
+				this.sequelize.defineAll(definitions, {primaryKeyAttributes: {foo: 'bar'}});
+
+				expect(this.models.User.attributes.id).to.be.ok;
+				expect(this.models.User.attributes.id.primaryKey).to.be.true;
+				expect(this.models.User.attributes.id.foo).to.equal('bar');
+			});
+
 			it('primaryKeyFirst', function() {
 				var definitions = {
 					User: {

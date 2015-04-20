@@ -130,4 +130,5 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 ## Next
 
+* `primaryKeyAttributes` option
 * Code tidy
