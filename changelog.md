@@ -128,7 +128,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 * Fix bug with labels on timestamp fields
 
-## Next
+## 0.3.0
 
 * `primaryKeyAttributes` option
 * Update require-folder-tree dependency to v1.1.0 (allows custom transformations of file names)
