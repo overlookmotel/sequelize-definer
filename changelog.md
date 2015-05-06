@@ -142,3 +142,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Update dev dependencies
 * Fix bug processing `options.fields`
 * README contribution section
+
+## Next
+
+* Replace `utils.endsWith` with `_.endsWith`
