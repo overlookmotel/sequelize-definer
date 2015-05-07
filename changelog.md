@@ -146,3 +146,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## 0.3.2
 
 * Replace `utils.endsWith` with `_.endsWith`
+
+## Next
+
+* Remove relative path to sequelize in tests
