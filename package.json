@@ -1,6 +1,6 @@
 {
   "name": "sequelize-definer",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Sequelize plugin to help easily define a set of models",
   "main": "./lib/",
   "author": {
