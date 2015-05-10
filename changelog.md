@@ -150,3 +150,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## 0.3.3
 
 * Remove relative path to sequelize in tests
+
+## Next
+
+* Move testExample to test/example

@@ -586,7 +586,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 	describe('defineFromFolder', function() {
 		it('defines all models', function() {
-			this.sequelize.defineFromFolder(pathModule.join(__dirname, '../testExample'));
+			this.sequelize.defineFromFolder(pathModule.join(__dirname, './example'));
 
 			expect(this.models.Task2).to.be.ok;
 			expect(this.models.User2).to.be.ok;
