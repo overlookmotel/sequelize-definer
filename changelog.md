@@ -154,3 +154,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## 0.3.4
 
 * Move testExample to test/example
+
+## Next
+
+* Disable Travis dependency cache
