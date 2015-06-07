@@ -158,3 +158,4 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## Next
 
 * Disable Travis dependency cache
+* Update README badges to use shields.io
