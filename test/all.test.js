@@ -9,7 +9,6 @@ var chai = require('chai'),
 	promised = require('chai-as-promised'),
 	Support = require(__dirname + '/support'),
 	Sequelize = Support.Sequelize,
-	Promise = Sequelize.Promise,
 	_ = require('lodash'),
 	pathModule = require('path');
 
@@ -18,6 +17,9 @@ chai.use(promised);
 chai.config.includeStack = true;
 
 // tests
+
+/* jshint expr: true */
+/* global describe, it, beforeEach */
 
 describe(Support.getTestDialectTeaser('Tests'), function () {
 	beforeEach(function() {
@@ -45,7 +47,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 			this.sequelize.defineAll(definitions);
 
-			_.forIn(definitions, function(definition, modelName) {
+			_.forIn(definitions, function(definition, modelName) { // jshint ignore:line
 				expect(this.models[modelName]).to.be.ok;
 				expect(this.models[modelName].tableName).to.equal(modelName + 's');
 			}.bind(this));
