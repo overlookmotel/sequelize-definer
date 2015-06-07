@@ -16,7 +16,7 @@ This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functi
 
 API is stable. All features and options are fairly well tested. Works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite, Microsoft SQL Server).
 
-Designed to be used with Sequelize v2.0.0+, but may work on Sequelize v1.7 too - please let me know if you have success with v1.7.
+Tested with Sequelize v2.x.x and v3.x.x, but may work on Sequelize v1.7 too - please let me know if you have success with v1.7.
 
 ## Usage
 

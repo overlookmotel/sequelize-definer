@@ -10,7 +10,10 @@ var chai = require('chai'),
 	Support = require(__dirname + '/support'),
 	Sequelize = Support.Sequelize,
 	_ = require('lodash'),
-	pathModule = require('path');
+	pathModule = require('path'),
+	semverSelect = require('semver-select');
+
+var sequelizeVersion = require('sequelize/package.json').version;
 
 // init
 chai.use(promised);
@@ -21,12 +24,19 @@ chai.config.includeStack = true;
 /* jshint expr: true */
 /* global describe, it, beforeEach */
 
+console.log('Sequelize version:', sequelizeVersion);
+
 describe(Support.getTestDialectTeaser('Tests'), function () {
 	beforeEach(function() {
 		this.models = this.sequelize.models;
 
+		var removeModel = semverSelect(sequelizeVersion, {
+			'<3.0.0': this.sequelize.modelManager.removeDAO,
+			'*': this.sequelize.modelManager.removeModel
+		}).bind(this.sequelize.modelManager);
+
 		_.forIn(this.models, function(model) {
-			this.sequelize.modelManager.removeDAO(model);
+			removeModel(model);
 		}.bind(this));
 	});
 
@@ -151,13 +161,19 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					this.sequelize.defineAll(definitions);
 
 					var models = this.models;
-					expect(models.Task.associations.User).to.be.ok;
-					expect(models.Task.associations.User.target).to.equal(models.User);
-					expect(models.Task.associations.User.isSingleAssociation).to.be.true;
+					var associations = _.values(models.Task.associations),
+						association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.User);
+					expect(association.as).to.equal('User');
+					expect(association.isSingleAssociation).to.be.true;
 
-					expect(models.User.associations.TasksUsers).to.be.ok;
-					expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
-					expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+					associations = _.values(models.User.associations);
+					association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.Task);
+					expect(association.as).to.equal('Tasks');
+					expect(association.isMultiAssociation).to.be.true;
 				});
 
 				it('deduces foreign key', function() {
@@ -180,13 +196,19 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					this.sequelize.defineAll(definitions);
 
 					var models = this.models;
-					expect(models.Task.associations.Worker).to.be.ok;
-					expect(models.Task.associations.Worker.target).to.equal(models.User);
-					expect(models.Task.associations.Worker.isSingleAssociation).to.be.true;
+					var associations = _.values(models.Task.associations),
+						association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.User);
+					expect(association.as).to.equal('Worker');
+					expect(association.isSingleAssociation).to.be.true;
 
-					expect(models.User.associations.TasksUsers).to.be.ok;
-					expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
-					expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+					associations = _.values(models.User.associations);
+					association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.Task);
+					expect(association.as).to.equal('Tasks');
+					expect(association.isMultiAssociation).to.be.true;
 				});
 
 				it('uses as and asReverse', function() {
@@ -242,13 +264,19 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					this.sequelize.defineAll(definitions);
 
 					var models = this.models;
-					expect(models.Task.associations.TasksUsers).to.be.ok;
-					expect(models.Task.associations.TasksUsers.target).to.equal(models.User);
-					expect(models.Task.associations.TasksUsers.isMultiAssociation).to.be.true;
+					var associations = _.values(models.Task.associations),
+						association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.User);
+					expect(association.as).to.equal('Users');
+					expect(association.isMultiAssociation).to.be.true;
 
-					expect(models.User.associations.TasksUsers).to.be.ok;
-					expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
-					expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+					associations = _.values(models.User.associations);
+					association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.Task);
+					expect(association.as).to.equal('Tasks');
+					expect(association.isMultiAssociation).to.be.true;
 
 					expect(models.TaskUser).to.be.ok;
 					expect(models.TaskUser.attributes.TaskId).to.be.ok;
@@ -320,13 +348,19 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					this.sequelize.defineAll(definitions);
 
 					var models = this.models;
-					expect(models.Task.associations.Joins).to.be.ok;
-					expect(models.Task.associations.Joins.target).to.equal(models.User);
-					expect(models.Task.associations.Joins.as).to.equal('Users');
+					var associations = _.values(models.Task.associations),
+						association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.User);
+					expect(association.as).to.equal('Users');
+					expect(association.isMultiAssociation).to.be.true;
 
-					expect(models.User.associations.Joins).to.be.ok;
-					expect(models.User.associations.Joins.target).to.equal(models.Task);
-					expect(models.User.associations.Joins.as).to.equal('Tasks');
+					associations = _.values(models.User.associations);
+					association = associations[0];
+					expect(associations).to.have.length(1);
+					expect(association.target).to.equal(models.Task);
+					expect(association.as).to.equal('Tasks');
+					expect(association.isMultiAssociation).to.be.true;
 
 					expect(models.Join.attributes.UserId).to.be.ok;
 					expect(models.Join.attributes.TaskId).to.be.ok;
@@ -539,13 +573,19 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				this.sequelize.defineAll(definitions, {autoAssociate: true});
 
 				var models = this.models;
-				expect(models.Task.associations.User).to.be.ok;
-				expect(models.Task.associations.User.target).to.equal(models.User);
-				expect(models.Task.associations.User.isSingleAssociation).to.be.true;
+				var associations = _.values(models.Task.associations),
+					association = associations[0];
+				expect(associations).to.have.length(1);
+				expect(association.target).to.equal(models.User);
+				expect(association.as).to.equal('User');
+				expect(association.isSingleAssociation).to.be.true;
 
-				expect(models.User.associations.TasksUsers).to.be.ok;
-				expect(models.User.associations.TasksUsers.target).to.equal(models.Task);
-				expect(models.User.associations.TasksUsers.isMultiAssociation).to.be.true;
+				associations = _.values(models.User.associations);
+				association = associations[0];
+				expect(associations).to.have.length(1);
+				expect(association.target).to.equal(models.Task);
+				expect(association.as).to.equal('Tasks');
+				expect(association.isMultiAssociation).to.be.true;
 			});
 
 			it('fields', function() {
