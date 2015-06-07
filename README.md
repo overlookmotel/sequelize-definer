@@ -12,6 +12,7 @@ This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functi
 [![Build Status](https://img.shields.io/travis/overlookmotel/sequelize-definer/master.svg)](http://travis-ci.org/overlookmotel/sequelize-definer)
 [![Dependency Status](https://img.shields.io/david/overlookmotel/sequelize-definer.svg)](https://david-dm.org/overlookmotel/sequelize-definer)
 [![Dev dependency Status](https://img.shields.io/david/dev/overlookmotel/sequelize-definer.svg)](https://david-dm.org/overlookmotel/sequelize-definer)
+[![Coverage Status](https://img.shields.io/coveralls/overlookmotel/sequelize-definer/master.svg)](https://coveralls.io/r/overlookmotel/sequelize-definer)
 
 API is stable. All features and options are fairly well tested. Works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite, Microsoft SQL Server).
 
@@ -386,7 +387,7 @@ Defaults to global define option set in `new Sequelize()` or `false` (default Se
 
 ## Tests
 
-Use `npm test` to run the tests.
+Use `npm test` to run the tests. Use `npm run cover` to check coverage.
 Requires a database called 'sequelize_test' and a db user 'sequelize_test' with no password.
 
 ## Changelog

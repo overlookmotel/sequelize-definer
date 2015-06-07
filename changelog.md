@@ -157,6 +157,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 ## Next
 
+* Test code coverage & Travis sends to coveralls
 * Run jshint on tests
 * Disable Travis dependency cache
 * Update README badges to use shields.io
