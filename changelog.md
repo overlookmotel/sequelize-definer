@@ -157,6 +157,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 ## Next
 
+* Travis runs tests with Sequelize v3 and v2
 * Test code coverage & Travis sends to coveralls
 * Run jshint on tests
 * Disable Travis dependency cache
