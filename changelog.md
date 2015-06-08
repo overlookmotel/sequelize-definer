@@ -157,6 +157,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 ## Next
 
+* Bug fix: Use `referenceKey` rather than `referencesKey`
 * Update dependencies
 * Update dev dependencies in line with Sequelize v3.2.0
 * Travis runs tests with Sequelize v3 and v2
@@ -164,3 +165,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 * Run jshint on tests
 * Disable Travis dependency cache
 * Update README badges to use shields.io
+
+Breaking changes:
+
+* Bug fix: Use `referenceKey` rather than `referencesKey`
