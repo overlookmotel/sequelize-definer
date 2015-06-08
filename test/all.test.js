@@ -31,26 +31,38 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 	});
 
 	describe('defineAll', function() {
-		it('defines all models', function() {
-			var definitions = {
-				User: {
-					fields: {
-						name: Sequelize.STRING(50)
+		describe('defines', function() {
+			beforeEach(function() {
+				this.definitions = {
+					User: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
+					},
+					Task: {
+						fields: {
+							name: Sequelize.STRING(50)
+						}
 					}
-				},
-				Task: {
-					fields: {
-						name: Sequelize.STRING(50)
-					}
-				}
-			};
+				};
 
-			this.sequelize.defineAll(definitions);
+				this.sequelize.defineAll(this.definitions);
+			});
 
-			_.forIn(definitions, function(definition, modelName) { // jshint ignore:line
-				expect(this.models[modelName]).to.be.ok;
-				expect(this.models[modelName].tableName).to.equal(modelName + 's');
-			}.bind(this));
+			it('defines all models', function() {
+				_.forIn(this.definitions, function(definition, modelName) { // jshint ignore:line
+					expect(this.models[modelName]).to.be.ok;
+					expect(this.models[modelName].tableName).to.equal(modelName + 's');
+				}.bind(this));
+			});
+
+			it('creates primary keys', function() {
+				_.forIn(this.definitions, function(definition, modelName) { // jshint ignore:line
+					expect(this.models[modelName].attributes.id).to.be.ok;
+					expect(this.models[modelName].attributes.id.primaryKey).to.be.true;
+					expect(this.models[modelName].attributes.id.autoIncrement).to.be.true;
+				}.bind(this));
+			});
 		});
 
 		describe('associations', function() {

@@ -157,6 +157,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 ## Next
 
+* Bug fix: Apply auto-increment by default on INTEGER/BIGINT primary key fields
 * Bug fix: Use `referenceKey` rather than `referencesKey`
 * Better support for underscored field names as references
 * Update dependencies
@@ -169,4 +170,5 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 Breaking changes:
 
+* Bug fix: Apply auto-increment by default on INTEGER/BIGINT primary key fields
 * Bug fix: Use `referenceKey` rather than `referencesKey`
