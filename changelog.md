@@ -158,6 +158,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 ## Next
 
 * Bug fix: Use `referenceKey` rather than `referencesKey`
+* Better support for underscored field names as references
 * Update dependencies
 * Update dev dependencies in line with Sequelize v3.2.0
 * Travis runs tests with Sequelize v3 and v2
