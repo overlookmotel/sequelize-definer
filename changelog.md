@@ -155,7 +155,7 @@ Now works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLi
 
 * Move testExample to test/example
 
-## Next
+## 0.4.0
 
 * Support for Sequelize v3.x.x
 * Bug fix: Apply auto-increment by default on INTEGER/BIGINT primary key fields
