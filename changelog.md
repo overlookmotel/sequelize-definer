@@ -174,6 +174,6 @@ Breaking changes:
 * Bug fix: Apply auto-increment by default on INTEGER/BIGINT primary key fields
 * Bug fix: Use `referenceKey` rather than `referencesKey`
 
-## Next
+## 0.4.1
 
 * Patch for `Utils.underscoredIf()` to support Sequelize > 3.5.0
