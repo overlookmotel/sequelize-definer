@@ -178,7 +178,7 @@ Breaking changes:
 
 * Patch for `Utils.underscoredIf()` to support Sequelize > 3.5.0
 
-## Next
+## 0.4.2
 
 * Update dependency mysql in line with Sequelize v3.7.1
 * Update dependency lodash
