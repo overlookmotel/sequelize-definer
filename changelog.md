@@ -184,6 +184,6 @@ Breaking changes:
 * Update dependency lodash
 * Update dev dependencies
 
-## Next
+## 0.4.3
 
 * Patches use `Sequelize.version` for version number where available
