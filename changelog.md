@@ -177,3 +177,7 @@ Breaking changes:
 ## 0.4.1
 
 * Patch for `Utils.underscoredIf()` to support Sequelize > 3.5.0
+
+## Next
+
+* Update dependency lodash
