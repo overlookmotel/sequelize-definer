@@ -191,3 +191,4 @@ Breaking changes:
 ## Next
 
 * Rename `SequelizeHierarchyError` to `HierarchyError`
+* Documentation for errors

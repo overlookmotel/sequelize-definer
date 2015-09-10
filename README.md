@@ -385,6 +385,10 @@ Defaults to global define option set in `new Sequelize()` or `false` (default Se
 
 `camelThrough` option can also be overridden on an individual many-to-many join with the `manyToMany` object's `camel` option.
 
+### Errors
+
+Errors thrown by the plugin are of type `DefinerError`. The error class can be accessed at `Sequelize.DefinerError`.
+
 ## Tests
 
 Use `npm test` to run the tests. Use `npm run cover` to check coverage.
