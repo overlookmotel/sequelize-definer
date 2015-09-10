@@ -187,3 +187,7 @@ Breaking changes:
 ## 0.4.3
 
 * Patches use `Sequelize.version` for version number where available
+
+## Next
+
+* Rename `SequelizeHierarchyError` to `HierarchyError`
