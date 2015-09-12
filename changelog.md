@@ -193,6 +193,6 @@ Breaking changes:
 * Rename `SequelizeHierarchyError` to `HierarchyError`
 * Documentation for errors
 
-## Next
+## 0.4.5
 
 * MSSQL config for tests
