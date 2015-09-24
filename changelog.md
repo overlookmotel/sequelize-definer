@@ -196,3 +196,7 @@ Breaking changes:
 ## 0.4.5
 
 * MSSQL config for tests
+
+## Next
+
+* Update `semver-select` dependency
