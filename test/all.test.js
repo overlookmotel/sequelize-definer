@@ -367,6 +367,48 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					expect(models.Join.attributes.id).not.to.exist;
 				});
 
+				it('handles self-association', function() {
+					var definitions = {
+						Task: {
+							fields: {
+								name: Sequelize.STRING(50)
+							},
+							manyToMany: {
+								Task: {
+									through: 'Join',
+									as: 'DoBefores',
+									asReverse: 'DoAfters'
+								}
+							}
+						},
+						Join: {
+							fields: {
+								status: Sequelize.STRING(50)
+							}
+						}
+					};
+
+					this.sequelize.defineAll(definitions);
+
+					var models = this.models;
+					var associations = _.values(models.Task.associations);
+					expect(associations).to.have.length(2);
+
+					var association = associations[0];
+					expect(association.target).to.equal(models.Task);
+					expect(association.as).to.equal('DoBefores');
+					expect(association.isMultiAssociation).to.be.true;
+
+					association = associations[1];
+					expect(association.target).to.equal(models.Task);
+					expect(association.as).to.equal('DoAfters');
+					expect(association.isMultiAssociation).to.be.true;
+
+					expect(models.Join.attributes.TaskId).to.be.ok;
+					expect(models.Join.attributes.DoBeforeId).to.be.ok;
+					expect(models.Join.attributes.id).not.to.exist;
+				});
+
 				describe('options', function() {
 					it('primaryKeyThrough', function() {
 						var definitions = {

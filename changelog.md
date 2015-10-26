@@ -199,5 +199,6 @@ Breaking changes:
 
 ## Next
 
+* Bug fix: Field names on many-to-many self-associations
 * Throw error if non-existent models referenced
 * Update `semver-select` dependency
