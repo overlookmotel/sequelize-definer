@@ -202,4 +202,5 @@ Breaking changes:
 * Bug fix: Field names on many-to-many self-associations
 * Throw error if non-existent models referenced
 * Update `semver-select` dependency
+* Update `mysql` dev dependency in line with Sequelize v3.12.2
 * Update dev dependencies
