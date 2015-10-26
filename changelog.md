@@ -197,7 +197,7 @@ Breaking changes:
 
 * MSSQL config for tests
 
-## Next
+## 0.4.6
 
 * Bug fix: Field names on many-to-many self-associations
 * Throw error if non-existent models referenced
