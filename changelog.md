@@ -199,4 +199,5 @@ Breaking changes:
 
 ## Next
 
+* Throw error if non-existent models referenced
 * Update `semver-select` dependency
