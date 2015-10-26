@@ -204,3 +204,4 @@ Breaking changes:
 * Update `semver-select` dependency
 * Update `mysql` dev dependency in line with Sequelize v3.12.2
 * Update dev dependencies
+* README
