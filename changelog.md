@@ -206,3 +206,10 @@ Breaking changes:
 * Update dev dependencies
 * License update
 * README
+
+## 0.5.0
+
+* `lowercaseTableName` option [feat]
+* `autoAssociate` option match upper case model names
+* Avoid errors on Sequelize versions without `Utils._` [fix]
+* Avoid errors on Sequelize versions without `Utils.uppercaseFirst` [fix]
