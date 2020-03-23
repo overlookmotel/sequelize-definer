@@ -378,6 +378,11 @@ Defaults to global define option set in `new Sequelize()` or `false`.
 When `true`, table names are the same as model names provided, not pluralized as per default Sequelize behaviour.
 Defaults to global define option set in `new Sequelize()` or `false`.
 
+#### lowercaseTableName
+
+When `true`, table names have first letter lower cased.
+Defaults to global define option set in `new Sequelize()` or `false`.
+
 #### camelThrough
 
 When `true`, creates through model names in camelcase (i.e. 'taskUser' rather than 'taskuser').
