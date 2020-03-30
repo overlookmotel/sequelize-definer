@@ -1,5 +1,9 @@
 test
-README.md
-changelog.md
-Makefile
 coverage
+
+.DS_Store
+.editorconfig
+.jshintrc
+.gitattributes
+.travis.yml
+Makefile
