@@ -19,7 +19,7 @@
     "semver-select": "^1.1.0"
   },
   "peerDependencies": {
-    "sequelize": "2.0.0 - 3.x.x"
+    "sequelize": "2.0.0 - 5.x.x"
   },
   "devDependencies": {
     "mocha": "^7.1.1",
@@ -27,7 +27,7 @@
     "chai-as-promised": "^7.1.1",
     "istanbul": "^0.4.5",
     "coveralls": "^3.0.11",
-    "sequelize": "2.0.0 - 3.x.x",
+    "sequelize": "2.0.0 - 5.x.x",
     "mysql2": "^2.1.0",
     "sqlite3": "^4.1.1",
     "pg": "^8.0.0",
