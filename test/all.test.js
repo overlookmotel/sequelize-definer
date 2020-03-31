@@ -21,9 +21,6 @@ chai.config.includeStack = true;
 
 // tests
 
-/* jshint expr: true */
-/* global describe, it, beforeEach */
-
 console.log('Sequelize version:', sequelizeVersion);
 
 describe(Support.getTestDialectTeaser('Tests'), function () {
@@ -60,14 +57,14 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('defines all models', function() {
-				_.forIn(this.definitions, function(definition, modelName) { // jshint ignore:line
+				_.forIn(this.definitions, function(definition, modelName) {
 					expect(this.models[modelName]).to.be.ok;
 					expect(this.models[modelName].tableName).to.equal(modelName + 's');
 				}.bind(this));
 			});
 
 			it('creates primary keys', function() {
-				_.forIn(this.definitions, function(definition, modelName) { // jshint ignore:line
+				_.forIn(this.definitions, function(definition, modelName) {
 					expect(this.models[modelName].rawAttributes.id).to.be.ok;
 					expect(this.models[modelName].rawAttributes.id.primaryKey).to.be.true;
 					expect(this.models[modelName].rawAttributes.id.autoIncrement).to.be.true;
