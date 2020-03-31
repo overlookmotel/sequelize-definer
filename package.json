@@ -22,19 +22,18 @@
     "sequelize": "2.0.0 - 3.x.x"
   },
   "devDependencies": {
-    "mocha": "^2.3.3",
-    "chai": "^3.4.0",
-    "chai-as-promised": "^5.1.0",
-    "istanbul": "^0.4.0",
-    "coveralls": "^2.11.4",
+    "mocha": "^7.1.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "istanbul": "^0.4.5",
+    "coveralls": "^3.0.11",
     "sequelize": "2.0.0 - 3.x.x",
-    "mysql": "~2.9.0",
-    "sqlite3": "^3.0.6",
-    "pg": "^4.2.0",
-    "pg-hstore": "^2.3.1",
-    "pg-native": "^1.8.0",
-    "tedious": "^1.7.0",
-    "jshint": "^2.8.0"
+    "mysql2": "^2.1.0",
+    "sqlite3": "^4.1.1",
+    "pg": "^8.0.0",
+    "pg-hstore": "^2.3.3",
+    "tedious": "8.2.0",
+    "jshint": "^2.11.0"
   },
   "keywords": [
     "sequelize",
