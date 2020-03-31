@@ -1,3 +1,5 @@
+language: node_js
+
 before_script:
   - "mysql -e 'create database sequelize_test;'"
   - "psql -c 'create database sequelize_test;' -U postgres"
@@ -8,6 +10,15 @@ before_script:
 
 script:
   - "npm run ci"
+
+node_js:
+  - "13"
+  - "12"
+  - "10"
+
+branches:
+  except:
+    - /^v\d+\./
 
 env:
   - DB=mysql DIALECT=mysql
@@ -22,18 +33,6 @@ env:
   - DB=mysql DIALECT=sqlite SEQ_VERSION=2
   - DB=mysql DIALECT=mariadb SEQ_VERSION=2
   - DB=mysql DIALECT=mssql SEQ_VERSION=2
-
-language: node_js
-
-node_js:
-  - "13"
-  - "12"
-  - "10"
-
-branches:
-  only:
-    - master
-    - dev
 
 matrix:
   fast_finish: true
