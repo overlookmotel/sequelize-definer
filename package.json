@@ -49,5 +49,5 @@
     "node": ">=0.6.21"
   },
   "readmeFilename": "README.md",
-  "license" : "MIT"
+  "license": "MIT"
 }
