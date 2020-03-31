@@ -26,8 +26,9 @@ env:
 language: node_js
 
 node_js:
-  - "0.10"
-  - "0.12"
+  - "13"
+  - "12"
+  - "10"
 
 branches:
   only:
@@ -37,7 +38,7 @@ branches:
 matrix:
   fast_finish: true
   include:
-    - node_js: "0.10"
+    - node_js: "12"
       env: DB=mysql DIALECT=mysql COVERAGE=true
   allow_failures:
     - env: DB=mysql DIALECT=mysql COVERAGE=true
