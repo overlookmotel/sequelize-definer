@@ -1,3 +1,8 @@
+/* --------------------
+ * Sequelize definer
+ * Tests config
+ * ------------------*/
+
 /* eslint-disable indent, key-spacing, no-multi-spaces, spaced-comment, object-shorthand, prefer-template, no-bitwise, max-len */
 
 'use strict';

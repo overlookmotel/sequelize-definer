@@ -1,7 +1,7 @@
-// --------------------
-// Sequelize definer
-// Tests
-// --------------------
+/* --------------------
+ * Sequelize definer
+ * Tests
+ * ------------------*/
 
 /* eslint-disable no-invalid-this */
 

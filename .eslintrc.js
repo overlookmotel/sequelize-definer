@@ -1,3 +1,8 @@
+/* --------------------
+ * Sequelize definer
+ * ESLint config
+ * ------------------*/
+
 'use strict';
 
 module.exports = {
