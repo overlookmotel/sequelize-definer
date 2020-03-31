@@ -68,9 +68,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 			it('creates primary keys', function() {
 				_.forIn(this.definitions, function(definition, modelName) { // jshint ignore:line
-					expect(this.models[modelName].attributes.id).to.be.ok;
-					expect(this.models[modelName].attributes.id.primaryKey).to.be.true;
-					expect(this.models[modelName].attributes.id.autoIncrement).to.be.true;
+					expect(this.models[modelName].rawAttributes.id).to.be.ok;
+					expect(this.models[modelName].rawAttributes.id.primaryKey).to.be.true;
+					expect(this.models[modelName].rawAttributes.id.autoIncrement).to.be.true;
 				}.bind(this));
 			});
 		});
@@ -279,9 +279,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					expect(association.isMultiAssociation).to.be.true;
 
 					expect(models.TaskUser).to.be.ok;
-					expect(models.TaskUser.attributes.TaskId).to.be.ok;
-					expect(models.TaskUser.attributes.UserId).to.be.ok;
-					expect(models.TaskUser.attributes.id).not.to.exist;
+					expect(models.TaskUser.rawAttributes.TaskId).to.be.ok;
+					expect(models.TaskUser.rawAttributes.UserId).to.be.ok;
+					expect(models.TaskUser.rawAttributes.id).not.to.exist;
 				});
 
 				it('uses as and asReverse', function() {
@@ -316,9 +316,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					expect(models.User.associations.OwnedTasks.as).to.equal('OwnedTasks');
 
 					expect(models.TaskOwner).to.be.ok;
-					expect(models.TaskOwner.attributes.UserId).to.be.ok;
-					expect(models.TaskOwner.attributes.TaskId).to.be.ok;
-					expect(models.TaskOwner.attributes.id).not.to.exist;
+					expect(models.TaskOwner.rawAttributes.UserId).to.be.ok;
+					expect(models.TaskOwner.rawAttributes.TaskId).to.be.ok;
+					expect(models.TaskOwner.rawAttributes.id).not.to.exist;
 				});
 
 				it('uses through', function() {
@@ -362,9 +362,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					expect(association.as).to.equal('Tasks');
 					expect(association.isMultiAssociation).to.be.true;
 
-					expect(models.Join.attributes.UserId).to.be.ok;
-					expect(models.Join.attributes.TaskId).to.be.ok;
-					expect(models.Join.attributes.id).not.to.exist;
+					expect(models.Join.rawAttributes.UserId).to.be.ok;
+					expect(models.Join.rawAttributes.TaskId).to.be.ok;
+					expect(models.Join.rawAttributes.id).not.to.exist;
 				});
 
 				it('handles self-association', function() {
@@ -404,9 +404,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					expect(association.as).to.equal('DoAfters');
 					expect(association.isMultiAssociation).to.be.true;
 
-					expect(models.Join.attributes.TaskId).to.be.ok;
-					expect(models.Join.attributes.DoBeforeId).to.be.ok;
-					expect(models.Join.attributes.id).not.to.exist;
+					expect(models.Join.rawAttributes.TaskId).to.be.ok;
+					expect(models.Join.rawAttributes.DoBeforeId).to.be.ok;
+					expect(models.Join.rawAttributes.id).not.to.exist;
 				});
 
 				describe('options', function() {
@@ -430,7 +430,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 						this.sequelize.defineAll(definitions, {primaryKeyThrough: true});
 
 						var models = this.models;
-						expect(models.TaskUser.attributes.id).to.be.ok;
+						expect(models.TaskUser.rawAttributes.id).to.be.ok;
 					});
 
 					it('associateThrough', function() {
@@ -482,7 +482,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 							this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}});
 
-							expect(this.models.TaskUser.attributes.moon).to.be.ok;
+							expect(this.models.TaskUser.rawAttributes.moon).to.be.ok;
 						});
 
 						it('fields not added if true', function() {
@@ -504,7 +504,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 							this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}, skipFieldsOnThrough: true});
 
-							expect(this.models.TaskUser.attributes.moon).not.to.exist;
+							expect(this.models.TaskUser.rawAttributes.moon).not.to.exist;
 						});
 					});
 
@@ -545,8 +545,8 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {primaryKey: 'foo'});
 
-				expect(this.models.User.attributes.foo).to.be.ok;
-				expect(this.models.User.attributes.foo.primaryKey).to.be.true;
+				expect(this.models.User.rawAttributes.foo).to.be.ok;
+				expect(this.models.User.rawAttributes.foo.primaryKey).to.be.true;
 			});
 
 			it('primaryKeyType', function() {
@@ -560,9 +560,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {primaryKeyType: Sequelize.STRING(10)});
 
-				expect(this.models.User.attributes.id).to.be.ok;
-				expect(this.models.User.attributes.id.primaryKey).to.be.true;
-				expect(this.models.User.attributes.id.type).to.be.instanceof(Sequelize.STRING);
+				expect(this.models.User.rawAttributes.id).to.be.ok;
+				expect(this.models.User.rawAttributes.id.primaryKey).to.be.true;
+				expect(this.models.User.rawAttributes.id.type).to.be.instanceof(Sequelize.STRING);
 			});
 
 			it('primaryKeyAttributes', function() {
@@ -576,9 +576,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {primaryKeyAttributes: {foo: 'bar'}});
 
-				expect(this.models.User.attributes.id).to.be.ok;
-				expect(this.models.User.attributes.id.primaryKey).to.be.true;
-				expect(this.models.User.attributes.id.foo).to.equal('bar');
+				expect(this.models.User.rawAttributes.id).to.be.ok;
+				expect(this.models.User.rawAttributes.id.primaryKey).to.be.true;
+				expect(this.models.User.rawAttributes.id.foo).to.equal('bar');
 			});
 
 			it('primaryKeyFirst', function() {
@@ -592,9 +592,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {primaryKeyFirst: true});
 
-				expect(this.models.User.attributes.id).to.be.ok;
-				expect(this.models.User.attributes.id.primaryKey).to.be.true;
-				expect(Object.keys(this.models.User.attributes)[0]).to.equal('id');
+				expect(this.models.User.rawAttributes.id).to.be.ok;
+				expect(this.models.User.rawAttributes.id.primaryKey).to.be.true;
+				expect(Object.keys(this.models.User.rawAttributes)[0]).to.equal('id');
 			});
 
 			it('autoAssociate', function() {
@@ -641,7 +641,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}});
 
-				expect(this.models.User.attributes.moon).to.be.ok;
+				expect(this.models.User.rawAttributes.moon).to.be.ok;
 			});
 
 			it('labels', function() {
@@ -656,7 +656,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {labels: true});
 
-				var attributes = this.models.User.attributes;
+				var attributes = this.models.User.rawAttributes;
 				expect(attributes.id.label).to.equal('ID');
 				expect(attributes.name.label).to.equal('Name');
 				expect(attributes.numberOfUnits.label).to.equal('Number Of Units');
