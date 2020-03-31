@@ -7,7 +7,7 @@ before_script:
   - 'if [ "$SEQ_VERSION" ]; then npm install sequelize@^$SEQ_VERSION.0.0; fi'
 
 script:
-  - "make test"
+  - "npm run ci"
 
 env:
   - DB=mysql DIALECT=mysql

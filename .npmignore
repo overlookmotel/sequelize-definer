@@ -6,4 +6,3 @@ coverage
 .jshintrc
 .gitattributes
 .travis.yml
-Makefile
