@@ -5,6 +5,7 @@
 
 'use strict';
 
+// Modules
 const fs = require('fs'),
 	path = require('path'),
 	_ = require('lodash'),
@@ -14,16 +15,18 @@ const fs = require('fs'),
 	{expect} = chai,
 	chaiAsPromised = require('chai-as-promised');
 
-
+// Imports
 const Config = require('./config/config');
-
 require('../lib/index')(Sequelize);
 
+// Init
 chai.use(chaiAsPromised);
 
 // Make sure errors get thrown when testing
 Sequelize.Promise.onPossiblyUnhandledRejection((e) => { throw e; });
 Sequelize.Promise.longStackTraces();
+
+// Exports
 
 const Support = {
 	Sequelize,

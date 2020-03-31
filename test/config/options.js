@@ -5,7 +5,10 @@
 
 'use strict';
 
+// Modules
 const path = require('path');
+
+// Exports
 
 module.exports = {
 	configFile: path.resolve('config', 'database.json'),
