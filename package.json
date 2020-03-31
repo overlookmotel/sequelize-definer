@@ -14,8 +14,8 @@
     "url": "https://github.com/overlookmotel/sequelize-definer/issues"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
-    "require-folder-tree": "^1.4.5",
+    "lodash": "^4.17.15",
+    "require-folder-tree": "^1.4.7",
     "semver-select": "^1.1.0"
   },
   "peerDependencies": {
