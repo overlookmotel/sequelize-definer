@@ -6,7 +6,10 @@
 
 'use strict';
 
+// Modules
 const Sequelize = require('sequelize');
+
+// Exports
 
 module.exports = {
 	fields: {

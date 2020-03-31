@@ -7,7 +7,7 @@
 
 'use strict';
 
-// modules
+// Modules
 const chai = require('chai'),
 	{expect} = chai,
 	promised = require('chai-as-promised'),
@@ -15,17 +15,18 @@ const chai = require('chai'),
 	pathModule = require('path'),
 	semverSelect = require('semver-select');
 
+// Imports
 const Support = require('./support'),
 	{Sequelize} = Support;
 
-// eslint-disable-next-line import/order, global-require
-const sequelizeVersion = Sequelize.version || require('sequelize/package.json').version;
-
-// init
+// Init
 chai.use(promised);
 chai.config.includeStack = true;
 
-// tests
+// Tests
+
+// eslint-disable-next-line import/order, global-require
+const sequelizeVersion = Sequelize.version || require('sequelize/package.json').version;
 
 console.log('Sequelize version:', sequelizeVersion); // eslint-disable-line no-console
 

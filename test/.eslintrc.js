@@ -5,6 +5,8 @@
 
 'use strict';
 
+// Exports
+
 module.exports = {
 	extends: [
 		'@overlookmotel/eslint-config-tests'
