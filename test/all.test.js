@@ -3,17 +3,23 @@
 // Tests
 // --------------------
 
+/* eslint-disable no-invalid-this */
+
+'use strict';
+
 // modules
-var chai = require('chai'),
-	expect = chai.expect,
+const chai = require('chai'),
+	{expect} = chai,
 	promised = require('chai-as-promised'),
-	Support = require(__dirname + '/support'),
-	Sequelize = Support.Sequelize,
 	_ = require('lodash'),
 	pathModule = require('path'),
 	semverSelect = require('semver-select');
 
-var sequelizeVersion = Sequelize.version || require('sequelize/package.json').version;
+const Support = require('./support'),
+	{Sequelize} = Support;
+
+// eslint-disable-next-line import/order, global-require
+const sequelizeVersion = Sequelize.version || require('sequelize/package.json').version;
 
 // init
 chai.use(promised);
@@ -21,24 +27,24 @@ chai.config.includeStack = true;
 
 // tests
 
-console.log('Sequelize version:', sequelizeVersion);
+console.log('Sequelize version:', sequelizeVersion); // eslint-disable-line no-console
 
-describe(Support.getTestDialectTeaser('Tests'), function () {
+describe(Support.getTestDialectTeaser('Tests'), () => {
 	beforeEach(function() {
 		this.models = this.sequelize.models;
 
-		var removeModel = semverSelect(sequelizeVersion, {
+		const removeModel = semverSelect(sequelizeVersion, {
 			'<3.0.0': this.sequelize.modelManager.removeDAO,
 			'*': this.sequelize.modelManager.removeModel
 		}).bind(this.sequelize.modelManager);
 
-		_.forIn(this.models, function(model) {
+		_.forIn(this.models, (model) => {
 			removeModel(model);
-		}.bind(this));
+		});
 	});
 
-	describe('defineAll', function() {
-		describe('defines', function() {
+	describe('defineAll', () => {
+		describe('defines', () => {
 			beforeEach(function() {
 				this.definitions = {
 					User: {
@@ -57,25 +63,25 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('defines all models', function() {
-				_.forIn(this.definitions, function(definition, modelName) {
+				_.forIn(this.definitions, (definition, modelName) => {
 					expect(this.models[modelName]).to.be.ok;
-					expect(this.models[modelName].tableName).to.equal(modelName + 's');
-				}.bind(this));
+					expect(this.models[modelName].tableName).to.equal(`${modelName}s`);
+				});
 			});
 
 			it('creates primary keys', function() {
-				_.forIn(this.definitions, function(definition, modelName) {
+				_.forIn(this.definitions, (definition, modelName) => {
 					expect(this.models[modelName].rawAttributes.id).to.be.ok;
 					expect(this.models[modelName].rawAttributes.id.primaryKey).to.be.true;
 					expect(this.models[modelName].rawAttributes.id.autoIncrement).to.be.true;
-				}.bind(this));
+				});
 			});
 		});
 
-		describe('associations', function() {
-			describe('one-to-one', function() {
+		describe('associations', () => {
+			describe('one-to-one', () => {
 				it('creates association', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -94,7 +100,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
+					const {models} = this;
 					expect(models.Task.associations.User).to.be.ok;
 					expect(models.Task.associations.User.target).to.equal(models.User);
 					expect(models.Task.associations.User.isSingleAssociation).to.be.true;
@@ -105,7 +111,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 
 				it('uses as and asReverse', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -126,7 +132,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
+					const {models} = this;
 					expect(models.Task.associations.Owner).to.be.ok;
 					expect(models.Task.associations.Owner.target).to.equal(models.User);
 					expect(models.Task.associations.Owner.as).to.equal('Owner');
@@ -137,9 +143,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 			});
 
-			describe('one-to-many', function() {
+			describe('one-to-many', () => {
 				it('creates association', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -157,8 +163,8 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
-					var associations = _.values(models.Task.associations),
+					const {models} = this;
+					let associations = _.values(models.Task.associations),
 						association = associations[0];
 					expect(associations).to.have.length(1);
 					expect(association.target).to.equal(models.User);
@@ -174,7 +180,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 
 				it('deduces foreign key', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -192,8 +198,8 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
-					var associations = _.values(models.Task.associations),
+					const {models} = this;
+					let associations = _.values(models.Task.associations),
 						association = associations[0];
 					expect(associations).to.have.length(1);
 					expect(association.target).to.equal(models.User);
@@ -209,7 +215,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 
 				it('uses as and asReverse', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -229,7 +235,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
+					const {models} = this;
 					expect(models.Task.associations.Owner).to.be.ok;
 					expect(models.Task.associations.Owner.target).to.equal(models.User);
 					expect(models.Task.associations.Owner.as).to.equal('Owner');
@@ -240,9 +246,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 			});
 
-			describe('many-to-many', function() {
+			describe('many-to-many', () => {
 				it('creates association', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -260,8 +266,8 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
-					var associations = _.values(models.Task.associations),
+					const {models} = this;
+					let associations = _.values(models.Task.associations),
 						association = associations[0];
 					expect(associations).to.have.length(1);
 					expect(association.target).to.equal(models.User);
@@ -282,7 +288,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 
 				it('uses as and asReverse', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -303,7 +309,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
+					const {models} = this;
 					expect(models.Task.associations.Owners).to.be.ok;
 					expect(models.Task.associations.Owners.target).to.equal(models.User);
 					expect(models.Task.associations.Owners.as).to.equal('Owners');
@@ -319,7 +325,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 
 				it('uses through', function() {
-					var definitions = {
+					const definitions = {
 						User: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -344,8 +350,8 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
-					var associations = _.values(models.Task.associations),
+					const {models} = this;
+					let associations = _.values(models.Task.associations),
 						association = associations[0];
 					expect(associations).to.have.length(1);
 					expect(association.target).to.equal(models.User);
@@ -365,7 +371,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 				});
 
 				it('handles self-association', function() {
-					var definitions = {
+					const definitions = {
 						Task: {
 							fields: {
 								name: Sequelize.STRING(50)
@@ -387,11 +393,11 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 					this.sequelize.defineAll(definitions);
 
-					var models = this.models;
-					var associations = _.values(models.Task.associations);
+					const {models} = this;
+					const associations = _.values(models.Task.associations);
 					expect(associations).to.have.length(2);
 
-					var association = associations[0];
+					let association = associations[0];
 					expect(association.target).to.equal(models.Task);
 					expect(association.as).to.equal('DoBefores');
 					expect(association.isMultiAssociation).to.be.true;
@@ -406,9 +412,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 					expect(models.Join.rawAttributes.id).not.to.exist;
 				});
 
-				describe('options', function() {
+				describe('options', () => {
 					it('primaryKeyThrough', function() {
-						var definitions = {
+						const definitions = {
 							User: {
 								fields: {
 									name: Sequelize.STRING(50)
@@ -426,12 +432,12 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 						this.sequelize.defineAll(definitions, {primaryKeyThrough: true});
 
-						var models = this.models;
+						const {models} = this;
 						expect(models.TaskUser.rawAttributes.id).to.be.ok;
 					});
 
 					it('associateThrough', function() {
-						var definitions = {
+						const definitions = {
 							User: {
 								fields: {
 									name: Sequelize.STRING(50)
@@ -449,7 +455,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 						this.sequelize.defineAll(definitions, {associateThrough: true});
 
-						var models = this.models;
+						const {models} = this;
 						expect(models.TaskUser.associations.User).to.be.ok;
 						expect(models.TaskUser.associations.User.target).to.equal(models.User);
 						expect(models.TaskUser.associations.User.as).to.equal('User');
@@ -459,9 +465,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 						expect(models.TaskUser.associations.Task.as).to.equal('Task');
 					});
 
-					describe('skipFieldsOnThrough', function() {
+					describe('skipFieldsOnThrough', () => {
 						it('fields added if false', function() {
-							var definitions = {
+							const definitions = {
 								User: {
 									fields: {
 										name: Sequelize.STRING(50)
@@ -483,7 +489,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 						});
 
 						it('fields not added if true', function() {
-							var definitions = {
+							const definitions = {
 								User: {
 									fields: {
 										name: Sequelize.STRING(50)
@@ -499,14 +505,17 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 								}
 							};
 
-							this.sequelize.defineAll(definitions, {fields: {moon: Sequelize.STRING}, skipFieldsOnThrough: true});
+							this.sequelize.defineAll(definitions, {
+								fields: {moon: Sequelize.STRING},
+								skipFieldsOnThrough: true
+							});
 
 							expect(this.models.TaskUser.rawAttributes.moon).not.to.exist;
 						});
 					});
 
 					it('camelThrough', function() {
-						var definitions = {
+						const definitions = {
 							user: {
 								fields: {
 									name: Sequelize.STRING(50)
@@ -530,9 +539,9 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 		});
 
-		describe('options', function() {
+		describe('options', () => {
 			it('primaryKey', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -547,7 +556,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('primaryKeyType', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -563,7 +572,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('primaryKeyAttributes', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -579,7 +588,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('primaryKeyFirst', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -595,7 +604,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('autoAssociate', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -611,8 +620,8 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {autoAssociate: true});
 
-				var models = this.models;
-				var associations = _.values(models.Task.associations),
+				const {models} = this;
+				let associations = _.values(models.Task.associations),
 					association = associations[0];
 				expect(associations).to.have.length(1);
 				expect(association.target).to.equal(models.User);
@@ -628,7 +637,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('fields', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -642,7 +651,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('labels', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50),
@@ -653,7 +662,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 
 				this.sequelize.defineAll(definitions, {labels: true});
 
-				var attributes = this.models.User.rawAttributes;
+				const attributes = this.models.User.rawAttributes;
 				expect(attributes.id.label).to.equal('ID');
 				expect(attributes.name.label).to.equal('Name');
 				expect(attributes.numberOfUnits.label).to.equal('Number Of Units');
@@ -662,7 +671,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 			});
 
 			it('freezeTableName', function() {
-				var definitions = {
+				const definitions = {
 					User: {
 						fields: {
 							name: Sequelize.STRING(50)
@@ -677,7 +686,7 @@ describe(Support.getTestDialectTeaser('Tests'), function () {
 		});
 	});
 
-	describe('defineFromFolder', function() {
+	describe('defineFromFolder', () => {
 		it('defines all models', function() {
 			this.sequelize.defineFromFolder(pathModule.join(__dirname, './example'));
 
