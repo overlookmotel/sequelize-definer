@@ -1,3 +1,8 @@
+/* --------------------
+ * Sequelize definer
+ * Tests options
+ * ------------------*/
+
 'use strict';
 
 const path = require('path');

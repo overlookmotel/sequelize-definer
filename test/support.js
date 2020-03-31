@@ -1,3 +1,8 @@
+/* --------------------
+ * Sequelize definer
+ * Tests support functions
+ * ------------------*/
+
 'use strict';
 
 const fs = require('fs'),
