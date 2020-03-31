@@ -3,6 +3,7 @@ coverage
 
 .DS_Store
 .editorconfig
-.jshintrc
+.eslintignore
+.eslintrc.js
 .gitattributes
 .travis.yml
