@@ -1,5 +1,7 @@
 # sequelize-definer.js
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/overlookmotel/sequelize-definer.svg)](https://greenkeeper.io/)
+
 # Sequelize plugin to help easily define a set of models
 
 ## What's it for?
