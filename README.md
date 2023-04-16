@@ -10,8 +10,6 @@ This plugin for [Sequelize](http://sequelizejs.com/) provides two utility functi
 
 [![NPM version](https://img.shields.io/npm/v/sequelize-definer.svg)](https://www.npmjs.com/package/sequelize-definer)
 [![Build Status](https://img.shields.io/travis/overlookmotel/sequelize-definer/master.svg)](http://travis-ci.org/overlookmotel/sequelize-definer)
-[![Dependency Status](https://img.shields.io/david/overlookmotel/sequelize-definer.svg)](https://david-dm.org/overlookmotel/sequelize-definer)
-[![Dev dependency Status](https://img.shields.io/david/dev/overlookmotel/sequelize-definer.svg)](https://david-dm.org/overlookmotel/sequelize-definer)
 [![Coverage Status](https://img.shields.io/coveralls/overlookmotel/sequelize-definer/master.svg)](https://coveralls.io/r/overlookmotel/sequelize-definer)
 
 API is stable. All features and options are fairly well tested. Works with all dialects of SQL supported by Sequelize (MySQL, Postgres, SQLite, Microsoft SQL Server).
