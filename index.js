@@ -1,5 +1,6 @@
 /* --------------------
- * Sequelize definer
+ * sequelize-definer module
+ * Entry point
  * ------------------*/
 
 'use strict';

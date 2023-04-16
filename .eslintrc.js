@@ -1,5 +1,5 @@
 /* --------------------
- * Sequelize definer
+ * sequelize-definer module
  * ESLint config
  * ------------------*/
 

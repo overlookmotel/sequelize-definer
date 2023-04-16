@@ -1,5 +1,5 @@
 /* --------------------
- * Sequelize definer
+ * sequelize-definer module
  * Tests fixtures
  * User2 model definition
  * ------------------*/

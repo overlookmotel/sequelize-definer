@@ -1,5 +1,5 @@
 /* --------------------
- * Sequelize definer
+ * sequelize-definer module
  * Tests fixtures
  * Task2 model definition
  * ------------------*/
