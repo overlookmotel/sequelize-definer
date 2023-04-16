@@ -36,6 +36,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^10.2.0",
     "mysql2": "^2.1.0",
+    "npm-run-all": "^4.1.5",
     "pg": "^8.0.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "2.0.0 - 5.x.x",
@@ -58,9 +59,10 @@
     "test-sqlite": "cross-env DIALECT=sqlite npm run test-main",
     "test-mssql": "cross-env DIALECT=mssql npm run test-main",
     "test-main": "mocha --check-leaks --colors -t 10000 -R spec 'test/**/*.test.js'",
-    "cover": "npm run cover-main && rm -rf coverage",
-    "coveralls": "npm run cover-main && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "cover": "npm-run-all -c cover-main cover-cleanup",
+    "coveralls": "npm run cover-main && cat ./coverage/lcov.info | coveralls; npm run cover-cleanup",
     "cover-main": "cross-env COVERAGE=true istanbul cover _mocha --report lcovonly -- -t 30000 -R spec \"test/**/*.test.js\"",
+    "cover-cleanup": "rm -rf coverage",
     "ci": "if [ $COVERAGE ]; then npm run coveralls; else npm test; fi"
   },
   "engines": {
