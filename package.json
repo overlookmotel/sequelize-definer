@@ -3,6 +3,9 @@
   "version": "0.5.0",
   "description": "Sequelize plugin to help easily define a set of models",
   "main": "./index.js",
+  "files": [
+    "lib/**/*.js"
+  ],
   "author": {
     "name": "Overlook Motel"
   },
