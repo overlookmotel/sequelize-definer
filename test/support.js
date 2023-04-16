@@ -16,8 +16,8 @@ const fs = require('fs'),
 	chaiAsPromised = require('chai-as-promised');
 
 // Imports
-const Config = require('./config/config');
-require('../lib/index')(Sequelize);
+const Config = require('./config/config.js');
+require('../lib/index.js')(Sequelize);
 
 // Init
 chai.use(chaiAsPromised);

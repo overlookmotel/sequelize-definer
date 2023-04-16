@@ -16,7 +16,7 @@ const chai = require('chai'),
 	semverSelect = require('semver-select');
 
 // Imports
-const Support = require('./support'),
+const Support = require('./support.js'),
 	{Sequelize} = Support;
 
 // Init
@@ -25,7 +25,7 @@ chai.config.includeStack = true;
 
 // Tests
 
-// eslint-disable-next-line import/order, global-require
+// eslint-disable-next-line global-require
 const sequelizeVersion = Sequelize.version || require('sequelize/package.json').version;
 
 console.log('Sequelize version:', sequelizeVersion); // eslint-disable-line no-console
