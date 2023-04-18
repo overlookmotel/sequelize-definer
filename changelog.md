@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.2
+
+Bug fixes:
+
+* Fix missing `index.js` file in NPM
+
 ## 0.6.1
 
 Docs:
