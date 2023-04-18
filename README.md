@@ -41,26 +41,27 @@ Call `Sequelize#defineAll( definitions )`, passing an object containing the mode
 
 ```js
 sequelize.defineAll({
-	User: {
-		fields: {
-			field1: ...,
-			field2: ...
-		},
-		options: { ... }
-	},
-	Task: {
-		fields: {
-			field1: ...,
-			field2: ...
-		},
-		options: { ... }
-	}
+  User: {
+    fields: {
+      field1: ...,
+      field2: ...
+    },
+    options: { ... }
+  },
+  Task: {
+    fields: {
+      field1: ...,
+      field2: ...
+    },
+    options: { ... }
+  }
 });
 ```
 
 `fields` and `options` are the same as are passed to `Sequelize#define( modelName, fields, options )`. Both are optional.
 
 ### Defining from folder
+
 #### Sequelize#defineFromFolder( folderPath [, options] )
 
 Call `Sequelize#defineFromFolder( folderPath )` passing full directory path of the folder to load model definitions from. e.g.:
@@ -76,9 +77,9 @@ Example of a model file:
 var Sequelize = require('sequelize');
 
 module.exports = {
-	fields: {
-		name: Sequelize.STRING
-	}
+  fields: {
+    name: Sequelize.STRING
+  }
 };
 ```
 
@@ -88,10 +89,10 @@ module.exports = {
 // Load files in sub-folders as models with name prefixed by folder name
 // e.g. `User/Permission.js` defines model `UserPermission`
 sequelize.defineFromFolder( path.join( __dirname, 'models' ), {
-	loadOptions: {
-		// NB flatten is always set to `true`
-		flattenPrefix: true
-	}
+  loadOptions: {
+    // NB flatten is always set to `true`
+    flattenPrefix: true
+  }
 } );
 ```
 
@@ -104,19 +105,19 @@ A one-to-many association:
 ```js
 // Each Task belongs to a User and a User has many Tasks
 sequelize.defineAll({
-	User: {
-		fields: {
-			name: Sequelize.STRING
-		}
-	},
-	Task: {
-		fields: {
-			name: Sequelize.STRING,
-			UserId: {
-				reference: 'User'
-			}
-		}
-	}
+  User: {
+    fields: {
+      name: Sequelize.STRING
+    }
+  },
+  Task: {
+    fields: {
+      name: Sequelize.STRING,
+      UserId: {
+        reference: 'User'
+      }
+    }
+  }
 });
 
 // Equivalent to:
@@ -128,14 +129,14 @@ For a one-to-one association (i.e. hasOne rather than hasMany), define `referenc
 
 ```js
 sequelize.defineAll({
-	User: ...,
-	Task: { fields: {
-		name: ...,
-		UserId: {
-			reference: 'User',
-			referenceType: 'one'
-		}
-	} }
+  User: ...,
+  Task: { fields: {
+    name: ...,
+    UserId: {
+      reference: 'User',
+      referenceType: 'one'
+    }
+  } }
 });
 
 // Equivalent to:
@@ -149,19 +150,19 @@ Other options...
 
 ```js
 sequelize.defineAll({
-	User: ...,
-	Task: { fields: {
-		name: ...,
-		UserId: {
-			reference: 'User',
-			referenceKey: 'id', // defaults to the primary key of the referenced model
-			as: 'Owner', // defaults to name of the referenced model
-			asReverse: 'TasksToDo', // defaults to name of this model
-			type: Sequelize.INTEGER, // defaults to type of the primary key field in referenced model
-			onDelete: 'CASCADE', // defaults to undefined (default Sequelize behaviour)
-			onUpdate: 'CASCADE' // defaults to undefined (default Sequelize behaviour)
-		}
-	} }
+  User: ...,
+  Task: { fields: {
+    name: ...,
+    UserId: {
+      reference: 'User',
+      referenceKey: 'id', // Defaults to the primary key of the referenced model
+      as: 'Owner', // Defaults to name of the referenced model
+      asReverse: 'TasksToDo', // Defaults to name of this model
+      type: Sequelize.INTEGER, // Defaults to type of the primary key field in referenced model
+      onDelete: 'CASCADE', // Defaults to undefined (default Sequelize behaviour)
+      onUpdate: 'CASCADE' // Defaults to undefined (default Sequelize behaviour)
+    }
+  } }
 });
 
 // Equivalent to:
@@ -179,19 +180,19 @@ See `autoAssociate` option below for an even easier way to handle associations.
 
 ```js
 sequelize.defineAll({
-	User: {
-		fields: {
-			name: Sequelize.STRING
-		}
-	},
-	Task: {
-		fields: {
-			name: Sequelize.STRING
-		},
-		manyToMany: {
-			User: true
-		}
-	}
+  User: {
+    fields: {
+      name: Sequelize.STRING
+    }
+  },
+  Task: {
+    fields: {
+      name: Sequelize.STRING
+    },
+    manyToMany: {
+      User: true
+    }
+  }
 });
 
 // Equivalent to:
@@ -203,25 +204,25 @@ Options can also be passed:
 
 ```js
 sequelize.defineAll({
-	User: ...,
-	Task: {
-		fields: ...,
-		manyToMany: {
-			User: {
-				onDelete: 'RESTRICT', // defaults to undefined
-				onUpdate: 'RESTRICT', // defaults to undefined
-				as: 'Worker', // defaults to name of the referenced model
-				asReverse: 'TasksToDo', // defaults to name of this model
-				through: 'UserTask', // defaults to undefined, creating through table automatically
-				skipFields: true // defaults to value of options.skipFieldsOnThrough (see below)
-			}
-		}
-	},
-	UserTask: {
-		fields: {
-			status: Sequelize.STRING
-		}
-	}
+  User: ...,
+  Task: {
+    fields: ...,
+    manyToMany: {
+      User: {
+        onDelete: 'RESTRICT', // Defaults to undefined
+        onUpdate: 'RESTRICT', // Defaults to undefined
+        as: 'Worker', // Defaults to name of the referenced model
+        asReverse: 'TasksToDo', // Defaults to name of this model
+        through: 'UserTask', // Defaults to undefined, creating through table automatically
+        skipFields: true // Defaults to value of options.skipFieldsOnThrough (see below)
+      }
+    }
+  },
+  UserTask: {
+    fields: {
+      status: Sequelize.STRING
+    }
+  }
 });
 
 // Equivalent to:
@@ -247,11 +248,11 @@ sequelize.defineAll( definitions, { primaryKey: 'ID' });
 If a function is provided in place of a string, the function is called to get the key name. Function is called with arguments `( modelName, definition, definitions )`.
 
 ```js
-// primary key for model User will be UserId
+// Primary key for model User will be UserId
 sequelize.defineAll( definitions, {
-	primaryKey: function(modelName) {
-		return modelName + 'Id';
-	}
+  primaryKey: function(modelName) {
+    return modelName + 'Id';
+  }
 });
 ```
 
@@ -299,20 +300,20 @@ When `true`, automatically creates associations where a column name matches the 
 
 ```js
 sequelize.defineAll({
-	User: {
-		fields: {
-			name: Sequelize.STRING
-		}
-	},
-	Task: {
-		fields: {
-			name: Sequelize.STRING,
-			UserId: { allowNull: false }
-		}
-	}
+  User: {
+    fields: {
+      name: Sequelize.STRING
+    }
+  },
+  Task: {
+    fields: {
+      name: Sequelize.STRING,
+      UserId: { allowNull: false }
+    }
+  }
 }, {
-	// options
-	autoAssociate: true
+  // Options
+  autoAssociate: true
 });
 
 // This automatically runs
@@ -329,10 +330,10 @@ Defaults to `undefined`.
 
 ```js
 sequelize.defineAll( definitions, { fields: {
-	createdByUserId: {
-		type: Sequelize.INTEGER,
-		references: 'Users'
-	}
+  createdByUserId: {
+    type: Sequelize.INTEGER,
+    references: 'Users'
+  }
 } });
 ```
 
@@ -340,15 +341,15 @@ If a function is provided in place of an object, the function is called to get t
 
 ```js
 sequelize.defineAll( definitions, {
-	autoAssociate: true,
-	fields: {
-		createdByUserId: function(modelName) {
-			return {
-				reference: 'User',
-				asReverse: 'created' + Sequelize.Utils.pluralize(modelName)
-			};
-		}
-	}
+  autoAssociate: true,
+  fields: {
+    createdByUserId: function(modelName) {
+      return {
+        reference: 'User',
+        asReverse: 'created' + Sequelize.Utils.pluralize(modelName)
+      };
+    }
+  }
 });
 
 // Equivalent to e.g.
