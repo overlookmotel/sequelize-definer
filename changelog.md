@@ -1,5 +1,68 @@
 # Changelog
 
+## 0.6.0
+
+Features:
+
+* Support Sequelize v5
+* Support multiple many-to-many relationships between same models
+
+Minor:
+
+* Drop support for Node versions < 10
+
+Bug fixes:
+
+* Fix pluralization of through table names
+* Fix missing `var`
+* Replace `attributes` with `rawAttributes`
+
+Refactor:
+
+* Refactor utils
+* Replace use of Lodash with ES6 JS
+* Break up long lines
+* Fix ESLint errors
+* `index.js` entry point
+
+Dependencies:
+
+* Update dependencies
+
+No code:
+
+* Header comments
+* Reformat code comments
+* Fix spacing in `package.json`
+
+Docs:
+
+* Versioning policy
+* Reverse changelog order
+* Update license year
+* Remove license indentation
+
+Dev:
+
+* Use NPM v9 for development
+* Replace make with npm scripts
+* Clean up after `cover` NPM script even if fails
+* Replace JSHint with ESLint
+* ESLint process all dot files
+* Simplify lint scripts
+* `package-lock.json`
+* Update `package-lock.json` format
+* Update NPM ignore
+* Replace `.npmignore` with `files` list in `package.json`
+* `package.json` re-order dev dependencies
+* `.gitattributes` file
+* Fix `.gitignore`
+* Remove `npm-debug.log` from `.gitignore`
+* Update `.editorconfig`
+* Remove `sudo` from Travis CI config
+* Reformat Travis CI config
+* Update dev dependencies
+
 ## 0.5.0
 
 * `lowercaseTableName` option [feat]
