@@ -4,6 +4,7 @@
   "description": "Sequelize plugin to help easily define a set of models",
   "main": "./index.js",
   "files": [
+    "index.js",
     "lib/**/*.js"
   ],
   "author": {
