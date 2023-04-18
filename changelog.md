@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.1
+
+Docs:
+
+* Reformat README
+
 ## 0.6.0
 
 Features:
